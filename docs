@@ -1,0 +1,263 @@
+# Phase A — known issues & findings
+
+Everything here was discovered during A1 (acquire & pin OptimusKG) and verified
+against release **2.0** of `doi:10.7910/DVN/IYNGEV` (published 2026-05-06).
+Evidence lives in `data/manifest/`: `okg_manifest.json`, `okg_census.json`,
+`okg_dispute_audit.json`, `a1_decisions.json`.
+
+Several of these contradict the Phase A how-to and the upstream documentation.
+Where they do, **the census wins** — it measures the release we actually pinned.
+
+---
+
+## 1. The DOI does not pin a release  *(upstream client defect)*
+
+`optimuskg.set_doi()` selects a **dataset**, not a version. `_dataverse.fetch_metadata()`
+unconditionally reads `latestVersion` from the Dataverse API, and
+`doi:10.7910/DVN/IYNGEV` is already the client's hardcoded `DEFAULT_DOI` — so the
+how-to's "pin to a specific Dataverse release DOI" line is a **no-op that looks
+like pinning**. Harvard Dataverse issues one DOI per dataset and versions
+underneath it; there is no per-release DOI to pin to.
+
+Observed live: the client shipped 2026-04-17 against release 1.0, and now
+silently resolves **2.0**. Identical code, identical DOI, identical lockfile,
+different graph. Nothing but the manifest catches this.
+
+**Mitigation.** Phase A is pinned by `data/manifest/okg_manifest.json`:
+`dataset_version` + a sha256 per file. `scripts/a1_pin_okg.py` exits non-zero if
+Dataverse later serves a different version.
+
+> Do **not** delete the manifest to clear that error. It means the upstream graph
+> moved and all of Phase A needs re-baselining.
+
+**Related.** `optimuskg.__version__` reports `"0.1.0"` in the published **1.0.0**
+wheel (stale literal in `__init__.py`). It is also the *client* version, not the
+graph release — so the how-to's `release = optimuskg.__version__` is wrong twice
+over. Use `importlib.metadata.version("optimuskg")` for the client and
+`dataset_version` from the manifest for the graph.
+
+**Filed upstream:** see `docs/UPSTREAM_ISSUE.md`.
+
+---
+
+## 2. 27 of 41 files publish an MD5 that doesn't match their bytes  *(adjudicated: benign)*
+
+**Status:** content correct, metadata wrong. Recorded as `checksum_dispute` in
+`okg_manifest.json`, not suppressed.
+
+`scripts/a1_pin_okg.py --all --allow-checksum-dispute` verifies 14/41 and flags
+27. The affected set is **exactly** the set of files whose content is unchanged
+since 1.0 — a clean partition, zero overlap:
+
+| | changed since 1.0 | MD5 correct |
+|---|---|---|
+| 14 verified files | 14 / 14 | yes |
+| 27 disputed files | 0 / 27 | no |
+
+On republication, unchanged files got a new datafile ID and a recorded MD5 that
+matches nothing served; changed files got correct hashes.
+
+**Worked example — `nodes/gene.parquet`:**
+
+| field | value |
+|---|---|
+| 2.0 datafile id | `13835027` |
+| 2.0 metadata `checksum.value` | `e19d8d3832f0983be0319802a51d91a5` |
+| 2.0 metadata `filesize` | `43273429` |
+| MD5 of bytes actually served | `bdd6b20ced62280c90d47c35a7256ee1` |
+| size of bytes served | `43273429` — **matches metadata** |
+| 1.0 predecessor id / md5 | `13668877` / `bdd6b20c…` (== served bytes) |
+
+The metadata is internally inconsistent: `filesize` agrees with the bytes,
+`checksum.value` does not. Downloads are deterministic.
+
+**Adjudication** (`scripts/a1_audit_disputes.py`, two independent tests):
+
+1. **Provenance** — 27/27 disputed files hash to the MD5 that release 1.0 records
+   for their predecessor. Unchanged since 1.0.
+2. **Content** — every stratified file is a strict subset of the flat
+   `nodes.parquet` / `edges.parquet`, both of which **pass** their own 2.0
+   checksums and therefore serve as a trusted oracle. 27/27 match their slice
+   exactly.
+
+> **Caveat on test 2.** It compares *keys* (`id`; `from`/`to`/`relation`), not
+> `properties`. It proves the right rows, not that every property is current.
+> Closed for GEN specifically (`scripts/a1_diag_gene.py` diffed `properties`
+> directly across 1.0/2.0 LCC — byte-identical). For the rest: **read from the
+> verified flat tables wherever `properties` matters**, which A2's provenance
+> requirement needs anyway.
+
+**Consequence:** none. The sha256 values in `okg_manifest.json` pin the bytes.
+That is what Phase A depends on — not Dataverse's published MD5.
+
+**Verified (14):** `nodes.parquet`, `edges.parquet`,
+`largest_connected_component_{nodes,edges}.parquet`, `nodes/drug.parquet`,
+`nodes/disease.parquet`, `nodes/phenotype.parquet`, `edges/drug_disease.parquet`,
+`edges/drug_gene.parquet`, `edges/drug_phenotype.parquet`,
+`edges/drug_biological_process.parquet`, `edges/disease_gene.parquet`,
+`edges/phenotype_gene.parquet`, `edges/exposure_exposure.parquet`.
+
+**Every file on the Phase A critical path is in that list.** The disputed 27 are
+anatomy, GO terms, exposures, pathways, gene–gene — periphery for repurposing.
+
+---
+
+## 3. Release 2.0 is a property-only refresh of 1.0
+
+Confirmed four independent ways:
+
+- `drift_vs_reference` = **0 nodes, 0 edges** vs the published 1.0 figures
+  (190,531 / 21,813,816).
+- Every per-label node count matches 1.0 exactly.
+- Every per-label edge count matches 1.0 exactly (`DRG-DIS` = 70,380,
+  `DRG-PHE` = 13,758, `DRG-GEN` = 20,694).
+- 27/27 unchanged files are byte-identical to their 1.0 predecessors.
+
+Same nodes, same edges, updated attributes.
+
+**Implication for A7 (temporal split).** The how-to lists "train on an older
+release, test on indications only in a newer one" as a stretch goal. Two releases
+exist and `/api/datasets/:persistentId/versions/1.0` returns 200 — but
+`DRG-DIS INDICATION` has an **identical count in both releases**, so an anti-join
+will likely return zero new pairs. Confirm before spending on it; expect the
+temporal split to be dead for this DOI. **Headline split stays drug-cold /
+disease-cold.**
+
+---
+
+## 4. `lcc=True` silently deletes 982 drugs (5.9% of the drug universe)
+
+The how-to's A1 uses `load_graph(lcc=True)`. Measured cost:
+
+| | full | LCC | dropped |
+|---|---|---|---|
+| nodes | 190,531 | 189,364 | 1,167 (0.61%) |
+| edges | 21,813,816 | 21,812,730 | 1,086 (0.005%) |
+
+Dropped nodes by label:
+
+| label | dropped | of total | rate |
+|---|---|---|---|
+| `DRG` | 982 | 16,766 | **5.86%** |
+| `PHE` | 164 | 19,341 | 0.85% |
+| `DIS` | 15 | 36,345 | 0.04% |
+| `EXP` | 6 | 881 | 0.68% |
+
+No ontology-backed type (`GEN`, `ANA`, `BPO`, `CCO`, `MFN`, `PWY`) is dropped —
+they hang off `IS_A`/`PARENT` hierarchies and cannot be orphaned. Only
+evidence-attached entity types fall out. The 164 `PHE` are exactly the
+`meddra`-prefixed nodes. Fewer edges than nodes dropped ⇒ ≥81 separate
+components outside the LCC, many nodes fully isolated.
+
+**Decision: `graph_variant = "full"`** (`data/manifest/a1_decisions.json`, frozen).
+
+Not because those 982 drugs are usable — an edgeless node is unreachable to a
+path-retrieval agent either way — but because **full makes the exclusion visible
+and countable**. Under `full`, they fall out at A6/A7 where coverage is reported.
+Under LCC they vanish before anything can count them, and a repoDB gold positive
+involving one just quietly doesn't exist. The how-to requires reporting coverage
+honestly; you cannot report what was deleted upstream.
+
+Downstream steps read `source_tables` from `a1_decisions.json`, not hardcoded
+filenames.
+
+---
+
+## 5. The how-to's schema assumptions are wrong (A2 will KeyError)
+
+| how-to assumes | release 2.0 actually has |
+|---|---|
+| nodes: `id`, `category`, `name`, `description` | **`id`, `label`, `properties`** |
+| edges: `subject`, `predicate`, `object`, `provided_by` | **`from`, `to`, `label`, `relation`, `undirected`, `properties`** |
+| Biolink predicates (`treats`) | codes: `INDICATION`, `ASSOCIATED_WITH`, `EXPRESSION_PRESENT` |
+| provenance in `provided_by` | **`properties.sources.{direct,indirect}`** — lists, not a scalar |
+| "predicates are directional; preserve direction" | explicit **`undirected` boolean per edge** — and `DRG-DIS` is `undirected: true` |
+| "26 relation types" | **27 edge labels, 36 distinct relations** |
+
+`canon_nodes = nodes.select(id_curie=pl.col("id"), category=..., name=...,
+description=...)` **fails as written**. Rewrite A2 against `okg_census.json`.
+
+In the flat tables `properties` is a **JSON string**; in the stratified per-type
+files it is a native Polars **Struct**. Prefer stratified where the file is
+checksum-verified (drug, disease, drug_disease, drug_gene, disease_gene,
+drug_phenotype, drug_biological_process, phenotype_gene); use the flat tables
+otherwise.
+
+**On the docs site:** optimuskg.ai documents release **1.0**. Its "26 relation
+types" (PyPI) / "27 edge types" (docs) both count *labels*; PyPI's figure is
+simply wrong. Use `okg_census.json` as the sole schema reference.
+
+---
+
+## 6. Node ID namespaces are heterogeneous — the how-to's A6 plan is half wrong
+
+Prefix distribution from `nodes.parquet` (totals reconcile exactly to the census):
+
+| label | prefixes |
+|---|---|
+| `DRG` (16,766) | **CHEMBL 15,477 (92%)**, DRUGBANK 1,227 (7%), RXNORM 62 |
+| `DIS` (36,345) | **EFO 11,960**, MONDO 11,724 (**32%**), OBA 10,997, Orphanet 1,637, + 9 long-tail (OTAR 9, DOID 6, OBI 4, NCIT 3, MP 2, PATO 2, OGMS 1) |
+| `GEN` (61,306) | ENSG 61,108, NCBIGene 198 |
+| `PHE` (19,341) | HP 19,177, meddra 164 |
+| `ANA`/`BPO`/`CCO`/`MFN`/`PWY`/`EXP` | UBERON / GO / GO / GO / REACT / MESH — single-prefix |
+
+Formatting is not uniformly CURIE either: `DOID_0050890` uses an underscore where
+`MONDO:0005148` uses a colon; `meddra` is lowercase.
+
+**Drugs — the how-to is right.** repoDB carries DrugBank IDs; a direct CURIE join
+reaches at most 1,227 of 16,766 nodes. **Standardize on InChIKey**, via
+`properties.inchi_key` (already on the node). `properties.struct_id` /
+`cd_id` (DrugCentral) are an alternative path worth testing — repoDB also carries
+DrugCentral IDs.
+
+**Diseases — the how-to is wrong.** "Standardize on MONDO" assumed MONDO *is* the
+disease space. It's 32%. This is an **Open Targets–derived, EFO-backboned** space.
+Mapping repoDB's UMLS CUIs → MONDO via OxO would strand two thirds of the graph.
+
+Use `properties.umls_cui` / `concept_ids`, present on `DIS` nodes **regardless of
+prefix**. repoDB is UMLS CUIs. This removes the OxO dependency entirely — subject
+to coverage (`scripts/a1_keycoverage.py`, run at A6).
+
+---
+
+## 7. `DIS` is not a disease-only label — ~30% are not diseases
+
+**OBA = Ontology of Biological Attributes**: traits and measurements (bone
+density, LDL level), swept in via Open Targets' GWAS space and labelled `DIS`.
+**10,997 of 36,345.**
+
+No drug treats a measurement. Left in the candidate pool they inflate the
+denominator and hand the agent ~11K unmatched targets.
+
+**Action:** exclude OBA (and review the long-tail PATO/MP/OBI prefixes, which are
+also attribute/organism ontologies) from the candidate disease space at **A7
+step 5**, alongside the Broad "already-indicated" exclusion. Report the count.
+
+---
+
+## 8. The A7 leakage surface is 7 label/relation pairs, not 1
+
+From `okg_census.json` — **79,949 edges total**:
+
+| label | relation | edges |
+|---|---|---|
+| `DRG-DIS` | `INDICATION` | 57,601 |
+| `DRG-DIS` | `CONTRAINDICATION` | 11,718 |
+| `DRG-DIS` | `OFF_LABEL_USE` | 1,061 |
+| `DRG-PHE` | `CONTRAINDICATION` | 8,279 |
+| `DRG-PHE` | `INDICATION` | 1,027 |
+| `DRG-PHE` | `OFF_LABEL_USE` | 201 |
+| `DRG-BPO` | `INDICATION` | 62 |
+
+`DRG-PHE` is exactly the "shortcut duplicate" the how-to warns about: diseases and
+phenotypes overlap heavily, so a held-out drug→disease pair can leak through a
+drug→phenotype edge. Stripping only `DRG-DIS/INDICATION` leaves **22,348 edges**
+of leakage surface behind.
+
+**Possible circularity — investigate at A5/A7.** `DRG-DIS` edges carry
+`properties.structure_id` and `drug_disease_id` (DrugCentral identifiers), so
+OptimusKG's indication edges appear to be DrugCentral-derived. repoDB is also
+built on DrugCentral. The gold set and the graph's own indication edges may be
+near-duplicates rather than independent. This does not invalidate the design —
+A7 removes those edges by construction — but it must be stated in the writeup,
+and it means "evaluable positives" coverage will look artificially high.

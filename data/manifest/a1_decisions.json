@@ -1,0 +1,15 @@
+{
+  "step": "A1",
+  "doi": "doi:10.7910/DVN/IYNGEV",
+  "dataset_version": "2.0",
+  "graph_variant": "full",
+  "source_tables": ["nodes.parquet", "edges.parquet"],
+  "rationale": "LCC drops 1167 nodes (0.61%) and 1086 edges (0.005%). Composition is not benign: 982 DRG (5.86% of all drugs), 164 PHE (all 164 meddra-prefixed), 15 DIS, 6 EXP. No ontology-backed types are dropped. Using LCC would silently remove ~6% of the candidate drug space before A4. Full costs 0.1MB and forces those nodes to be excluded explicitly, with counts, at A6/A7 rather than vanishing upstream.",
+  "lcc_delta": {
+    "nodes_dropped": 1167, "edges_dropped": 1086,
+    "pct_nodes": 0.612, "pct_edges": 0.005,
+    "by_label": {"DRG": 982, "PHE": 164, "DIS": 15, "EXP": 6}
+  },
+  "decided_on": "2026-07-15",
+  "note": "Frozen. Do not revisit; a moving graph variant makes all downstream numbers incomparable."
+}

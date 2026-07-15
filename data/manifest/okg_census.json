@@ -1,0 +1,564 @@
+{
+  "doi": "doi:10.7910/DVN/IYNGEV",
+  "dataset_version": "2.0",
+  "reference_release": {
+    "version": "1.0",
+    "nodes": 190531,
+    "edges": 21813816,
+    "relations": 27
+  },
+  "variants": {
+    "full": {
+      "n_nodes": 190531,
+      "n_edges": 21813816
+    },
+    "lcc": {
+      "n_nodes": 189364,
+      "n_edges": 21812730
+    }
+  },
+  "lcc_delta": {
+    "nodes_dropped": 1167,
+    "edges_dropped": 1086,
+    "pct_nodes": 0.6124987534836851,
+    "pct_edges": 0.004978496197089038
+  },
+  "drift_vs_reference": {
+    "nodes": 0,
+    "edges": 0
+  },
+  "census_variant": "full",
+  "node_columns": [
+    "id",
+    "label",
+    "properties"
+  ],
+  "edge_columns": [
+    "from",
+    "to",
+    "label",
+    "relation",
+    "undirected",
+    "properties"
+  ],
+  "nodes_by_label": [
+    {
+      "label": "GEN",
+      "len": 61306
+    },
+    {
+      "label": "DIS",
+      "len": 36345
+    },
+    {
+      "label": "BPO",
+      "len": 25754
+    },
+    {
+      "label": "PHE",
+      "len": 19341
+    },
+    {
+      "label": "DRG",
+      "len": 16766
+    },
+    {
+      "label": "ANA",
+      "len": 13120
+    },
+    {
+      "label": "MFN",
+      "len": 10161
+    },
+    {
+      "label": "CCO",
+      "len": 4052
+    },
+    {
+      "label": "PWY",
+      "len": 2805
+    },
+    {
+      "label": "EXP",
+      "len": 881
+    }
+  ],
+  "edges_by_label_relation": [
+    {
+      "label": "DIS-GEN",
+      "relation": "ASSOCIATED_WITH",
+      "len": 9734774
+    },
+    {
+      "label": "ANA-GEN",
+      "relation": "EXPRESSION_PRESENT",
+      "len": 6616463
+    },
+    {
+      "label": "ANA-GEN",
+      "relation": "EXPRESSION_ABSENT",
+      "len": 2171492
+    },
+    {
+      "label": "DRG-DRG",
+      "relation": "SYNERGISTIC_INTERACTION",
+      "len": 1341086
+    },
+    {
+      "label": "PHE-GEN",
+      "relation": "ASSOCIATED_WITH",
+      "len": 793279
+    },
+    {
+      "label": "GEN-GEN",
+      "relation": "INTERACTS_WITH",
+      "len": 327924
+    },
+    {
+      "label": "BPO-GEN",
+      "relation": "INTERACTS_WITH",
+      "len": 158410
+    },
+    {
+      "label": "DIS-PHE",
+      "relation": "PHENOTYPE_PRESENT",
+      "len": 157144
+    },
+    {
+      "label": "CCO-GEN",
+      "relation": "INTERACTS_WITH",
+      "len": 105309
+    },
+    {
+      "label": "MFN-GEN",
+      "relation": "INTERACTS_WITH",
+      "len": 90933
+    },
+    {
+      "label": "DRG-DIS",
+      "relation": "INDICATION",
+      "len": 57601
+    },
+    {
+      "label": "PWY-GEN",
+      "relation": "INTERACTS_WITH",
+      "len": 46977
+    },
+    {
+      "label": "BPO-BPO",
+      "relation": "IS_A",
+      "len": 44494
+    },
+    {
+      "label": "DIS-DIS",
+      "relation": "PARENT",
+      "len": 44215
+    },
+    {
+      "label": "PHE-PHE",
+      "relation": "PARENT",
+      "len": 24862
+    },
+    {
+      "label": "ANA-ANA",
+      "relation": "PARENT",
+      "len": 17082
+    },
+    {
+      "label": "MFN-MFN",
+      "relation": "IS_A",
+      "len": 12587
+    },
+    {
+      "label": "DRG-DIS",
+      "relation": "CONTRAINDICATION",
+      "len": 11718
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "TARGET",
+      "len": 9465
+    },
+    {
+      "label": "DRG-PHE",
+      "relation": "CONTRAINDICATION",
+      "len": 8279
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "ENZYME",
+      "len": 4857
+    },
+    {
+      "label": "CCO-CCO",
+      "relation": "IS_A",
+      "len": 4639
+    },
+    {
+      "label": "DRG-DRG",
+      "relation": "PARENT",
+      "len": 4290
+    },
+    {
+      "label": "DRG-PHE",
+      "relation": "ASSOCIATED_WITH",
+      "len": 3677
+    },
+    {
+      "label": "EXP-GEN",
+      "relation": "INTERACTS_WITH",
+      "len": 2989
+    },
+    {
+      "label": "PWY-PWY",
+      "relation": "PARENT",
+      "len": 2819
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "TRANSPORTER",
+      "len": 2764
+    },
+    {
+      "label": "EXP-EXP",
+      "relation": "PARENT",
+      "len": 2443
+    },
+    {
+      "label": "EXP-DIS",
+      "relation": "LINKED_TO",
+      "len": 2391
+    },
+    {
+      "label": "EXP-BPO",
+      "relation": "INTERACTS_WITH",
+      "len": 2260
+    },
+    {
+      "label": "DRG-DIS",
+      "relation": "OFF_LABEL_USE",
+      "len": 1061
+    },
+    {
+      "label": "DRG-PHE",
+      "relation": "INDICATION",
+      "len": 1027
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "INHIBITOR",
+      "len": 845
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "CARRIER",
+      "len": 711
+    },
+    {
+      "label": "DRG-PHE",
+      "relation": "ADVERSE_DRUG_REACTION",
+      "len": 574
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "POSITIVE_ALLOSTERIC_MODULATOR",
+      "len": 564
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "AGONIST",
+      "len": 499
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "ANTAGONIST",
+      "len": 475
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "BLOCKER",
+      "len": 241
+    },
+    {
+      "label": "DRG-PHE",
+      "relation": "OFF_LABEL_USE",
+      "len": 201
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "POSITIVE_MODULATOR",
+      "len": 108
+    },
+    {
+      "label": "DRG-BPO",
+      "relation": "INDICATION",
+      "len": 62
+    },
+    {
+      "label": "EXP-MFN",
+      "relation": "INTERACTS_WITH",
+      "len": 47
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "PARTIAL_AGONIST",
+      "len": 35
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "MODULATOR",
+      "len": 35
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "STABILISER",
+      "len": 21
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "NEGATIVE_ALLOSTERIC_MODULATOR",
+      "len": 17
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "ALLOSTERIC_ANTAGONIST",
+      "len": 16
+    },
+    {
+      "label": "EXP-CCO",
+      "relation": "INTERACTS_WITH",
+      "len": 13
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "OPENER",
+      "len": 10
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "ACTIVATOR",
+      "len": 7
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "RELEASING_AGENT",
+      "len": 6
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "INVERSE_AGONIST",
+      "len": 6
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "BINDING_AGENT",
+      "len": 4
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "NEGATIVE_MODULATOR",
+      "len": 3
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "SUBSTRATE",
+      "len": 3
+    },
+    {
+      "label": "DRG-GEN",
+      "relation": "DEGRADER",
+      "len": 2
+    }
+  ],
+  "n_edge_labels": 27,
+  "n_relations": 36,
+  "directionality": [
+    {
+      "label": "ANA-ANA",
+      "undirected": false,
+      "len": 17082
+    },
+    {
+      "label": "ANA-GEN",
+      "undirected": true,
+      "len": 8787955
+    },
+    {
+      "label": "BPO-BPO",
+      "undirected": false,
+      "len": 44494
+    },
+    {
+      "label": "BPO-GEN",
+      "undirected": true,
+      "len": 158410
+    },
+    {
+      "label": "CCO-CCO",
+      "undirected": false,
+      "len": 4639
+    },
+    {
+      "label": "CCO-GEN",
+      "undirected": true,
+      "len": 105309
+    },
+    {
+      "label": "DIS-DIS",
+      "undirected": false,
+      "len": 44215
+    },
+    {
+      "label": "DIS-GEN",
+      "undirected": true,
+      "len": 9734774
+    },
+    {
+      "label": "DIS-PHE",
+      "undirected": true,
+      "len": 157144
+    },
+    {
+      "label": "DRG-BPO",
+      "undirected": true,
+      "len": 62
+    },
+    {
+      "label": "DRG-DIS",
+      "undirected": true,
+      "len": 70380
+    },
+    {
+      "label": "DRG-DRG",
+      "undirected": false,
+      "len": 1345376
+    },
+    {
+      "label": "DRG-GEN",
+      "undirected": false,
+      "len": 20694
+    },
+    {
+      "label": "DRG-PHE",
+      "undirected": true,
+      "len": 13758
+    },
+    {
+      "label": "EXP-BPO",
+      "undirected": true,
+      "len": 2260
+    },
+    {
+      "label": "EXP-CCO",
+      "undirected": true,
+      "len": 13
+    },
+    {
+      "label": "EXP-DIS",
+      "undirected": false,
+      "len": 2391
+    },
+    {
+      "label": "EXP-EXP",
+      "undirected": false,
+      "len": 2443
+    },
+    {
+      "label": "EXP-GEN",
+      "undirected": false,
+      "len": 2989
+    },
+    {
+      "label": "EXP-MFN",
+      "undirected": true,
+      "len": 47
+    },
+    {
+      "label": "GEN-GEN",
+      "undirected": false,
+      "len": 327924
+    },
+    {
+      "label": "MFN-GEN",
+      "undirected": true,
+      "len": 90933
+    },
+    {
+      "label": "MFN-MFN",
+      "undirected": false,
+      "len": 12587
+    },
+    {
+      "label": "PHE-GEN",
+      "undirected": false,
+      "len": 793279
+    },
+    {
+      "label": "PHE-PHE",
+      "undirected": false,
+      "len": 24862
+    },
+    {
+      "label": "PWY-GEN",
+      "undirected": true,
+      "len": 46977
+    },
+    {
+      "label": "PWY-PWY",
+      "undirected": false,
+      "len": 2819
+    }
+  ],
+  "leakage_surface": [
+    {
+      "label": "DRG-BPO",
+      "relation": "INDICATION",
+      "len": 62
+    },
+    {
+      "label": "DRG-DIS",
+      "relation": "CONTRAINDICATION",
+      "len": 11718
+    },
+    {
+      "label": "DRG-DIS",
+      "relation": "INDICATION",
+      "len": 57601
+    },
+    {
+      "label": "DRG-DIS",
+      "relation": "OFF_LABEL_USE",
+      "len": 1061
+    },
+    {
+      "label": "DRG-PHE",
+      "relation": "CONTRAINDICATION",
+      "len": 8279
+    },
+    {
+      "label": "DRG-PHE",
+      "relation": "INDICATION",
+      "len": 1027
+    },
+    {
+      "label": "DRG-PHE",
+      "relation": "OFF_LABEL_USE",
+      "len": 201
+    }
+  ],
+  "leakage_total_edges": 79949,
+  "id_examples": [
+    {
+      "label": "GEN",
+      "example_id": "ENSG00000000003"
+    },
+    {
+      "label": "DIS",
+      "example_id": "DOID_0050890"
+    },
+    {
+      "label": "DRG",
+      "example_id": "CHEMBL1000"
+    }
+  ]
+}

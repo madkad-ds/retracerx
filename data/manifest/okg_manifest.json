@@ -1,0 +1,507 @@
+{
+  "step": "A1",
+  "doi": "doi:10.7910/DVN/IYNGEV",
+  "server": "https://dataverse.harvard.edu",
+  "dataset_version": "2.0",
+  "version_state": "RELEASED",
+  "release_time": "2026-05-06T21:18:30Z",
+  "resolved_at_utc": "2026-07-15T08:42:16.018514+00:00",
+  "client": {
+    "package": "optimuskg",
+    "dist_version": "1.0.0",
+    "dunder_version": "0.1.0"
+  },
+  "pinning_note": "The optimuskg client always resolves Dataverse latestVersion; set_doi() selects a dataset, not a release. Reproducibility rests on dataset_version plus the sha256 values below, not on the DOI alone.",
+  "files": {
+    "edges/anatomy_anatomy.parquet": {
+      "dataverse_file_id": 13835050,
+      "filesize_bytes": 73685,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "6cf97b2e82d34ac094cce222207e164e",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/anatomy_anatomy.parquet",
+      "sha256": "10f2f9fad74c2c2c44d97be14907ecc986b5a550a7cae45466564a8977e29f09",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "6cf97b2e82d34ac094cce222207e164e",
+        "local": "62bbd145216c7061b210fc8702317f53"
+      }
+    },
+    "edges/anatomy_gene.parquet": {
+      "dataverse_file_id": 13835039,
+      "filesize_bytes": 42537331,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "964044d91f94929121d384ed6c7b3a68",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/anatomy_gene.parquet",
+      "sha256": "27c5cba6daf0a5b0b830061ca03c17bd5c26ddc57c680d43f09130e2138ee2e3",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "964044d91f94929121d384ed6c7b3a68",
+        "local": "4879da1cd0d70bd901f10b01a5a3a884"
+      }
+    },
+    "nodes/anatomy.parquet": {
+      "dataverse_file_id": 13835037,
+      "filesize_bytes": 1097019,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "5c8e58a03dc4b9123e231f4d88f71f13",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/anatomy.parquet",
+      "sha256": "26e86357c10ba600f322c34a6cacb55d2f462c8955216cc31827e27382964113",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "5c8e58a03dc4b9123e231f4d88f71f13",
+        "local": "9e087647d8d500cabf06d17c22fd1aeb"
+      }
+    },
+    "edges/biological_process_biological_process.parquet": {
+      "dataverse_file_id": 13835032,
+      "filesize_bytes": 238692,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "fa66dedb6b1839439ba86713266c0374",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/biological_process_biological_process.parquet",
+      "sha256": "20c61dcb7eb129c34d1b37bcf470a0c4bfb275303e6dedb2ffddde0666e4a938",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "fa66dedb6b1839439ba86713266c0374",
+        "local": "40589325bb921e5cd076cbe4366be6c4"
+      }
+    },
+    "edges/biological_process_gene.parquet": {
+      "dataverse_file_id": 13835028,
+      "filesize_bytes": 1952119,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "32af0b1b5074781d53576eb0251e812d",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/biological_process_gene.parquet",
+      "sha256": "1f84ee31ce9fbdd02375650caa926d5ca424b6d5e5afb65cad688ed5f944e00f",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "32af0b1b5074781d53576eb0251e812d",
+        "local": "680ecd25bac294010c11eb119d33678b"
+      }
+    },
+    "nodes/biological_process.parquet": {
+      "dataverse_file_id": 13835025,
+      "filesize_bytes": 1609244,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "e5ca91c81e35642cf51225185290404e",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/biological_process.parquet",
+      "sha256": "02e41948a5ae33cc960a0030affdb60d360ceb38c9abfb05c614d9e62566bfd4",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "e5ca91c81e35642cf51225185290404e",
+        "local": "d4b96aa2aee92a2ffa5e169c3dd7f75e"
+      }
+    },
+    "edges/cellular_component_cellular_component.parquet": {
+      "dataverse_file_id": 13835031,
+      "filesize_bytes": 20582,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "eea54c59aaf47855c12abc27ea0e2ab6",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/cellular_component_cellular_component.parquet",
+      "sha256": "532e1b79f5bd79233f7d9ec0ad49c62c57afb610e876e2d917a4e619294ac790",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "eea54c59aaf47855c12abc27ea0e2ab6",
+        "local": "1c9d72c9025d5598643ba22fdccf43b7"
+      }
+    },
+    "edges/cellular_component_gene.parquet": {
+      "dataverse_file_id": 13835054,
+      "filesize_bytes": 1670338,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "6d5e8fcd2714fb9d4d1d0a4a79c50601",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/cellular_component_gene.parquet",
+      "sha256": "25a0ac2edfd430e824db5d467d0f12676263f007437e4c0a3cffead329b2253d",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "6d5e8fcd2714fb9d4d1d0a4a79c50601",
+        "local": "9a25fa70a833705ddbba4887237d7cef"
+      }
+    },
+    "nodes/cellular_component.parquet": {
+      "dataverse_file_id": 13835051,
+      "filesize_bytes": 344936,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "4417038a6dda058c52622578e2955c77",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/cellular_component.parquet",
+      "sha256": "7201a0d98ad26093f158edb8f191555a88efd45a17e6983bac320232110fd180",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "4417038a6dda058c52622578e2955c77",
+        "local": "0213336b8ace3b92345ed3e6907578ed"
+      }
+    },
+    "edges/disease_disease.parquet": {
+      "dataverse_file_id": 13835026,
+      "filesize_bytes": 162953,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "141101ee58a082c3a86a25c26a51fab3",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/disease_disease.parquet",
+      "sha256": "31f6666f975bcd78f0b9824de7f8e5059b3d82bdfe65abe271ac6f446779de24",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "141101ee58a082c3a86a25c26a51fab3",
+        "local": "315b988473005e06049391d0a06db889"
+      }
+    },
+    "edges/disease_gene.parquet": {
+      "dataverse_file_id": 13835023,
+      "filesize_bytes": 72758767,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "987d04b48f24f6690993801f5191343e",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/disease_gene.parquet",
+      "sha256": "3fb5df3f41ee917438826c2e98a21cc20dce172746fed32000ef477d88a33ac3"
+    },
+    "nodes/disease.parquet": {
+      "dataverse_file_id": 13835021,
+      "filesize_bytes": 4533886,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "aca02e0ded15b965ae57fde94bf6369c",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/disease.parquet",
+      "sha256": "46b41e6553e7f0cdb2a787a6ecbf0062f6f1e51173b91331b2a77978d4a104a8"
+    },
+    "edges/disease_phenotype.parquet": {
+      "dataverse_file_id": 13835034,
+      "filesize_bytes": 1356475,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "81716afff26b5e38f5e644d011654dd5",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/disease_phenotype.parquet",
+      "sha256": "82e5c360adec86b95942c37d661771a5009f31df63061eea10e26c115643f637",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "81716afff26b5e38f5e644d011654dd5",
+        "local": "de16fd4b65344ec54b4f4ee75c70cd8c"
+      }
+    },
+    "edges/drug_biological_process.parquet": {
+      "dataverse_file_id": 13835012,
+      "filesize_bytes": 5377,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "b4e3173e6a300fa9abad4956eedd4b28",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/drug_biological_process.parquet",
+      "sha256": "aec42265e3285e5b8260fb34a909172635aec0f7b97d12fa2ebc648a827dc2dd"
+    },
+    "edges/drug_disease.parquet": {
+      "dataverse_file_id": 13835022,
+      "filesize_bytes": 1280320,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "c87cd4047b771dc259798b94ce0da20f",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/drug_disease.parquet",
+      "sha256": "8fa670c3292eb45c202d1abf31667135708ef994c71f0a32e0d46320b24b802d"
+    },
+    "edges/drug_drug.parquet": {
+      "dataverse_file_id": 13835047,
+      "filesize_bytes": 14432073,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "33909166975b381d034cee75473b8aae",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/drug_drug.parquet",
+      "sha256": "446939540a5ff5f3b98b54add1f0db967bd93fde38cf393303448d2f5cd498f1",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "33909166975b381d034cee75473b8aae",
+        "local": "000ece1483730f9affc7ea339f40a4e2"
+      }
+    },
+    "edges/drug_gene.parquet": {
+      "dataverse_file_id": 13835033,
+      "filesize_bytes": 189094,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "c70ad5e9f7d09d6884bab513a92cefe1",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/drug_gene.parquet",
+      "sha256": "ab0b95d4805f3f085b703cce554b2064641b620bd8d13297fdaea2bf82b7cb4b"
+    },
+    "nodes/drug.parquet": {
+      "dataverse_file_id": 13835029,
+      "filesize_bytes": 37998267,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "a04006837f84e40aeedbbfb0b806ecd2",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/drug.parquet",
+      "sha256": "6b735706a094753f295f0925ac7403338a28ae6bf7b58d7a586f1644f88be51c"
+    },
+    "edges/drug_phenotype.parquet": {
+      "dataverse_file_id": 13835024,
+      "filesize_bytes": 166993,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "81127cbbe4798b4f7eac918cc8582345",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/drug_phenotype.parquet",
+      "sha256": "1adb583591fd2980f4a38505079935443ff662e9036cbad144fc3b2e2b55b9b5"
+    },
+    "edges.parquet": {
+      "dataverse_file_id": 13835018,
+      "filesize_bytes": 177526798,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "24dd404e9f52b935c91849a99aaed517",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "sha256": "2a551d832c7d10758d2d5a6a636fb8eef863beeb65967b74546385ba3e7f6940"
+    },
+    "edges/exposure_biological_process.parquet": {
+      "dataverse_file_id": 13835030,
+      "filesize_bytes": 210857,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "961da46a863e96cfb6c36158b2931705",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/exposure_biological_process.parquet",
+      "sha256": "db116aa4b5d972f6c35b5ad79fd6a6dab7664aa88397ec9b2417f4d0d2e034a0",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "961da46a863e96cfb6c36158b2931705",
+        "local": "5d2673b040abbdb3e58db6d736f13bf4"
+      }
+    },
+    "edges/exposure_cellular_component.parquet": {
+      "dataverse_file_id": 13835040,
+      "filesize_bytes": 20722,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "4d1fa6c37073df9261921d2f6e93a2ea",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/exposure_cellular_component.parquet",
+      "sha256": "7929906e69923fbc7b517ba343c3c63261b9745014e5217bdfe548ae9568c6fe",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "4d1fa6c37073df9261921d2f6e93a2ea",
+        "local": "6bf68e828c6db46a79e8f02c44e52cb9"
+      }
+    },
+    "edges/exposure_disease.parquet": {
+      "dataverse_file_id": 13835019,
+      "filesize_bytes": 210901,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "cdacedd5c0a85584e3e19e6b7cc39236",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/exposure_disease.parquet",
+      "sha256": "0aaf050a979d5dc848868541c925091d3812052d2619230db1480d6d25481c13",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "cdacedd5c0a85584e3e19e6b7cc39236",
+        "local": "2c1a6b0a4f8ee9d69ad724ab23689cd7"
+      }
+    },
+    "edges/exposure_exposure.parquet": {
+      "dataverse_file_id": 13835016,
+      "filesize_bytes": 577061,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "da00892f83f3ffc7254df0c281bf623c",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/exposure_exposure.parquet",
+      "sha256": "a269d3b4bb6bce2e82aad850057fbf60a4dc9dade19ab4c30877ceedafcb81a3"
+    },
+    "edges/exposure_gene.parquet": {
+      "dataverse_file_id": 13835055,
+      "filesize_bytes": 167279,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "357708b1007357ce0329eb99b7de7391",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/exposure_gene.parquet",
+      "sha256": "21b357fdaecb983b3bd27718603ddb8af6f1cecfadf70cd63164ed62d187790d",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "357708b1007357ce0329eb99b7de7391",
+        "local": "9974266a89db1ed58c8fafebf7ea78de"
+      }
+    },
+    "edges/exposure_molecular_function.parquet": {
+      "dataverse_file_id": 13835020,
+      "filesize_bytes": 25516,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "456e16ed575aed8d3f016e0f5b4ec318",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/exposure_molecular_function.parquet",
+      "sha256": "8daefe646b699fb1f407de1688df2af51ef8dd16f602248ed9ece7d91089dd9d",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "456e16ed575aed8d3f016e0f5b4ec318",
+        "local": "230d5c3c427422821d679a6e1b4af359"
+      }
+    },
+    "nodes/exposure.parquet": {
+      "dataverse_file_id": 13835048,
+      "filesize_bytes": 21702,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "eb30b962596a077622e308f3c9e5f97e",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/exposure.parquet",
+      "sha256": "e8eea4823a2f020d853e3fa2de686c3d16bcff13c784dff6d6ce22cc4df6c091",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "eb30b962596a077622e308f3c9e5f97e",
+        "local": "367d9405e1f487005f863d687b8cff04"
+      }
+    },
+    "edges/gene_gene.parquet": {
+      "dataverse_file_id": 13835052,
+      "filesize_bytes": 1833633,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "a1d50a1b3ac352bc9b2889a5c3c5970b",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/gene_gene.parquet",
+      "sha256": "a1b12cfba84904ec8403f4069aa2f5c947ce204c23aa7c6e7c41b8a79c68207a",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "a1d50a1b3ac352bc9b2889a5c3c5970b",
+        "local": "954dbd5c3cd4069354542e7f615acb3e"
+      }
+    },
+    "nodes/gene.parquet": {
+      "dataverse_file_id": 13835027,
+      "filesize_bytes": 43273429,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "e19d8d3832f0983be0319802a51d91a5",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/gene.parquet",
+      "sha256": "4d394d15b6fdcaf25b110a7d4db78b7cb17c8de80efbde3255fbbe07087a0cd1",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "e19d8d3832f0983be0319802a51d91a5",
+        "local": "bdd6b20ced62280c90d47c35a7256ee1"
+      }
+    },
+    "largest_connected_component_edges.parquet": {
+      "dataverse_file_id": 13835038,
+      "filesize_bytes": 177417947,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "4fcbdd69e4ccb8f230cee481a71c39c5",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/largest_connected_component_edges.parquet",
+      "sha256": "62e0a4cec032c94157fcadb7c11cc1d5e6b0dcb9a686e9a4fb31e139665b9952"
+    },
+    "largest_connected_component_nodes.parquet": {
+      "dataverse_file_id": 13835036,
+      "filesize_bytes": 163920815,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "8bd09df2721d121334f484c43598a19c",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/largest_connected_component_nodes.parquet",
+      "sha256": "5eb164fba6e82827c53dce24c2de79ffe4e11dfa667e728abc7b744361ce8526"
+    },
+    "edges/molecular_function_gene.parquet": {
+      "dataverse_file_id": 13835046,
+      "filesize_bytes": 1390380,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "64cf9743dd1899b276863d52eb0c5cfb",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/molecular_function_gene.parquet",
+      "sha256": "c7f352ce2d3c422c05f476e3ddcdb889579b77b7e03f47cf8c772b458f67081c",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "64cf9743dd1899b276863d52eb0c5cfb",
+        "local": "c0b94c4be672ca62cd10fbbcf9b3273c"
+      }
+    },
+    "edges/molecular_function_molecular_function.parquet": {
+      "dataverse_file_id": 13835043,
+      "filesize_bytes": 46099,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "d8bf99e90d22ffaf9b7309c6e0486481",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/molecular_function_molecular_function.parquet",
+      "sha256": "e0be839601536c9ad43c3e43b4f8e6ce3cb1a65187cd234a622299745f26e68b",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "d8bf99e90d22ffaf9b7309c6e0486481",
+        "local": "5aca867ea98544412d506aa7a55a31da"
+      }
+    },
+    "nodes/molecular_function.parquet": {
+      "dataverse_file_id": 13835049,
+      "filesize_bytes": 737317,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "e1fce364f07c212933a13636b26615fe",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/molecular_function.parquet",
+      "sha256": "d78c660c3f7d12baf30381560284a945d0855ddc05719433ec2616cc5a2dd9f8",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "e1fce364f07c212933a13636b26615fe",
+        "local": "d748112744aaf442bd0e4c3daa079961"
+      }
+    },
+    "nodes.parquet": {
+      "dataverse_file_id": 13835035,
+      "filesize_bytes": 163857672,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "5e0609a5cfdde70ecf86cbfdef701432",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "sha256": "0601aaf9a659ca0f89aa9ab8b8baa2d3318b2d21e1d93d678d53e800a86eddad"
+    },
+    "edges/pathway_gene.parquet": {
+      "dataverse_file_id": 13835042,
+      "filesize_bytes": 134262,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "278ee70b29a24754ca5c817875998433",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/pathway_gene.parquet",
+      "sha256": "80e8d10cd87fb10be6fc392221c4910e4b116a70a14f410dd75a4524da298493",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "278ee70b29a24754ca5c817875998433",
+        "local": "07f1de24fa0f5e9bbdfe76c8b65abfcd"
+      }
+    },
+    "nodes/pathway.parquet": {
+      "dataverse_file_id": 13835041,
+      "filesize_bytes": 50610,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "ff21d3babb04843e1100f91374d7e82a",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/pathway.parquet",
+      "sha256": "c27f5947c74965d0406bf818554d9d51ec859615594365f30e253e297f771682",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "ff21d3babb04843e1100f91374d7e82a",
+        "local": "7f2b6f03145447405a236eb566a402fa"
+      }
+    },
+    "edges/pathway_pathway.parquet": {
+      "dataverse_file_id": 13835044,
+      "filesize_bytes": 19052,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "2a61ba022c480d47bddcde29d93495a0",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/pathway_pathway.parquet",
+      "sha256": "2a27a1f948b1a45878c323cc99ed67e6c391721eaf5c7a4d94d1cd9b93aa5139",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "2a61ba022c480d47bddcde29d93495a0",
+        "local": "825a740f3b1a98fa4626fa26a1b6705e"
+      }
+    },
+    "edges/phenotype_gene.parquet": {
+      "dataverse_file_id": 13835017,
+      "filesize_bytes": 4835488,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "c2211777806fab121f55559c10a9d958",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/phenotype_gene.parquet",
+      "sha256": "e74e01754c8be85e3da541eea2c51ca43813cfdb8dabbbfa2e1377ebb10d40e0"
+    },
+    "nodes/phenotype.parquet": {
+      "dataverse_file_id": 13835045,
+      "filesize_bytes": 1060035,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "43af0769a411dfc36eab3b50091979ff",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes/phenotype.parquet",
+      "sha256": "a0dc2ed859e0f6965257029ea600b5f5069f9e92444179e939c0a57360a8674a"
+    },
+    "edges/phenotype_phenotype.parquet": {
+      "dataverse_file_id": 13835053,
+      "filesize_bytes": 117326,
+      "remote_checksum_type": "MD5",
+      "remote_checksum_value": "ebfb38dee668c6ecf9cb889b7e09c7f5",
+      "local_path": "data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges/phenotype_phenotype.parquet",
+      "sha256": "6797e6b7333ae41bb8a99ca814ec595c87ec96190fd06b5adaf73cb7a912d1db",
+      "checksum_dispute": {
+        "reason": "remote_checksum_disagrees",
+        "algorithm": "MD5",
+        "remote": "ebfb38dee668c6ecf9cb889b7e09c7f5",
+        "local": "20d70a1527371f350190dbcf0d2a24a6"
+      }
+    }
+  }
+}

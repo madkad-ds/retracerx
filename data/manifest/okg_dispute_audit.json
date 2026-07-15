@@ -1,0 +1,305 @@
+{
+  "dataset_version": "2.0",
+  "n_disputed": 27,
+  "test1": {
+    "edges/anatomy_anatomy.parquet": {
+      "local_md5": "62bbd145216c7061b210fc8702317f53",
+      "v1_md5": "62bbd145216c7061b210fc8702317f53",
+      "v2_metadata_md5": "6cf97b2e82d34ac094cce222207e164e",
+      "identical_to_v1": true
+    },
+    "edges/anatomy_gene.parquet": {
+      "local_md5": "4879da1cd0d70bd901f10b01a5a3a884",
+      "v1_md5": "4879da1cd0d70bd901f10b01a5a3a884",
+      "v2_metadata_md5": "964044d91f94929121d384ed6c7b3a68",
+      "identical_to_v1": true
+    },
+    "edges/biological_process_biological_process.parquet": {
+      "local_md5": "40589325bb921e5cd076cbe4366be6c4",
+      "v1_md5": "40589325bb921e5cd076cbe4366be6c4",
+      "v2_metadata_md5": "fa66dedb6b1839439ba86713266c0374",
+      "identical_to_v1": true
+    },
+    "edges/biological_process_gene.parquet": {
+      "local_md5": "680ecd25bac294010c11eb119d33678b",
+      "v1_md5": "680ecd25bac294010c11eb119d33678b",
+      "v2_metadata_md5": "32af0b1b5074781d53576eb0251e812d",
+      "identical_to_v1": true
+    },
+    "edges/cellular_component_cellular_component.parquet": {
+      "local_md5": "1c9d72c9025d5598643ba22fdccf43b7",
+      "v1_md5": "1c9d72c9025d5598643ba22fdccf43b7",
+      "v2_metadata_md5": "eea54c59aaf47855c12abc27ea0e2ab6",
+      "identical_to_v1": true
+    },
+    "edges/cellular_component_gene.parquet": {
+      "local_md5": "9a25fa70a833705ddbba4887237d7cef",
+      "v1_md5": "9a25fa70a833705ddbba4887237d7cef",
+      "v2_metadata_md5": "6d5e8fcd2714fb9d4d1d0a4a79c50601",
+      "identical_to_v1": true
+    },
+    "edges/disease_disease.parquet": {
+      "local_md5": "315b988473005e06049391d0a06db889",
+      "v1_md5": "315b988473005e06049391d0a06db889",
+      "v2_metadata_md5": "141101ee58a082c3a86a25c26a51fab3",
+      "identical_to_v1": true
+    },
+    "edges/disease_phenotype.parquet": {
+      "local_md5": "de16fd4b65344ec54b4f4ee75c70cd8c",
+      "v1_md5": "de16fd4b65344ec54b4f4ee75c70cd8c",
+      "v2_metadata_md5": "81716afff26b5e38f5e644d011654dd5",
+      "identical_to_v1": true
+    },
+    "edges/drug_drug.parquet": {
+      "local_md5": "000ece1483730f9affc7ea339f40a4e2",
+      "v1_md5": "000ece1483730f9affc7ea339f40a4e2",
+      "v2_metadata_md5": "33909166975b381d034cee75473b8aae",
+      "identical_to_v1": true
+    },
+    "edges/exposure_biological_process.parquet": {
+      "local_md5": "5d2673b040abbdb3e58db6d736f13bf4",
+      "v1_md5": "5d2673b040abbdb3e58db6d736f13bf4",
+      "v2_metadata_md5": "961da46a863e96cfb6c36158b2931705",
+      "identical_to_v1": true
+    },
+    "edges/exposure_cellular_component.parquet": {
+      "local_md5": "6bf68e828c6db46a79e8f02c44e52cb9",
+      "v1_md5": "6bf68e828c6db46a79e8f02c44e52cb9",
+      "v2_metadata_md5": "4d1fa6c37073df9261921d2f6e93a2ea",
+      "identical_to_v1": true
+    },
+    "edges/exposure_disease.parquet": {
+      "local_md5": "2c1a6b0a4f8ee9d69ad724ab23689cd7",
+      "v1_md5": "2c1a6b0a4f8ee9d69ad724ab23689cd7",
+      "v2_metadata_md5": "cdacedd5c0a85584e3e19e6b7cc39236",
+      "identical_to_v1": true
+    },
+    "edges/exposure_gene.parquet": {
+      "local_md5": "9974266a89db1ed58c8fafebf7ea78de",
+      "v1_md5": "9974266a89db1ed58c8fafebf7ea78de",
+      "v2_metadata_md5": "357708b1007357ce0329eb99b7de7391",
+      "identical_to_v1": true
+    },
+    "edges/exposure_molecular_function.parquet": {
+      "local_md5": "230d5c3c427422821d679a6e1b4af359",
+      "v1_md5": "230d5c3c427422821d679a6e1b4af359",
+      "v2_metadata_md5": "456e16ed575aed8d3f016e0f5b4ec318",
+      "identical_to_v1": true
+    },
+    "edges/gene_gene.parquet": {
+      "local_md5": "954dbd5c3cd4069354542e7f615acb3e",
+      "v1_md5": "954dbd5c3cd4069354542e7f615acb3e",
+      "v2_metadata_md5": "a1d50a1b3ac352bc9b2889a5c3c5970b",
+      "identical_to_v1": true
+    },
+    "edges/molecular_function_gene.parquet": {
+      "local_md5": "c0b94c4be672ca62cd10fbbcf9b3273c",
+      "v1_md5": "c0b94c4be672ca62cd10fbbcf9b3273c",
+      "v2_metadata_md5": "64cf9743dd1899b276863d52eb0c5cfb",
+      "identical_to_v1": true
+    },
+    "edges/molecular_function_molecular_function.parquet": {
+      "local_md5": "5aca867ea98544412d506aa7a55a31da",
+      "v1_md5": "5aca867ea98544412d506aa7a55a31da",
+      "v2_metadata_md5": "d8bf99e90d22ffaf9b7309c6e0486481",
+      "identical_to_v1": true
+    },
+    "edges/pathway_gene.parquet": {
+      "local_md5": "07f1de24fa0f5e9bbdfe76c8b65abfcd",
+      "v1_md5": "07f1de24fa0f5e9bbdfe76c8b65abfcd",
+      "v2_metadata_md5": "278ee70b29a24754ca5c817875998433",
+      "identical_to_v1": true
+    },
+    "edges/pathway_pathway.parquet": {
+      "local_md5": "825a740f3b1a98fa4626fa26a1b6705e",
+      "v1_md5": "825a740f3b1a98fa4626fa26a1b6705e",
+      "v2_metadata_md5": "2a61ba022c480d47bddcde29d93495a0",
+      "identical_to_v1": true
+    },
+    "edges/phenotype_phenotype.parquet": {
+      "local_md5": "20d70a1527371f350190dbcf0d2a24a6",
+      "v1_md5": "20d70a1527371f350190dbcf0d2a24a6",
+      "v2_metadata_md5": "ebfb38dee668c6ecf9cb889b7e09c7f5",
+      "identical_to_v1": true
+    },
+    "nodes/anatomy.parquet": {
+      "local_md5": "9e087647d8d500cabf06d17c22fd1aeb",
+      "v1_md5": "9e087647d8d500cabf06d17c22fd1aeb",
+      "v2_metadata_md5": "5c8e58a03dc4b9123e231f4d88f71f13",
+      "identical_to_v1": true
+    },
+    "nodes/biological_process.parquet": {
+      "local_md5": "d4b96aa2aee92a2ffa5e169c3dd7f75e",
+      "v1_md5": "d4b96aa2aee92a2ffa5e169c3dd7f75e",
+      "v2_metadata_md5": "e5ca91c81e35642cf51225185290404e",
+      "identical_to_v1": true
+    },
+    "nodes/cellular_component.parquet": {
+      "local_md5": "0213336b8ace3b92345ed3e6907578ed",
+      "v1_md5": "0213336b8ace3b92345ed3e6907578ed",
+      "v2_metadata_md5": "4417038a6dda058c52622578e2955c77",
+      "identical_to_v1": true
+    },
+    "nodes/exposure.parquet": {
+      "local_md5": "367d9405e1f487005f863d687b8cff04",
+      "v1_md5": "367d9405e1f487005f863d687b8cff04",
+      "v2_metadata_md5": "eb30b962596a077622e308f3c9e5f97e",
+      "identical_to_v1": true
+    },
+    "nodes/gene.parquet": {
+      "local_md5": "bdd6b20ced62280c90d47c35a7256ee1",
+      "v1_md5": "bdd6b20ced62280c90d47c35a7256ee1",
+      "v2_metadata_md5": "e19d8d3832f0983be0319802a51d91a5",
+      "identical_to_v1": true
+    },
+    "nodes/molecular_function.parquet": {
+      "local_md5": "d748112744aaf442bd0e4c3daa079961",
+      "v1_md5": "d748112744aaf442bd0e4c3daa079961",
+      "v2_metadata_md5": "e1fce364f07c212933a13636b26615fe",
+      "identical_to_v1": true
+    },
+    "nodes/pathway.parquet": {
+      "local_md5": "7f2b6f03145447405a236eb566a402fa",
+      "v1_md5": "7f2b6f03145447405a236eb566a402fa",
+      "v2_metadata_md5": "ff21d3babb04843e1100f91374d7e82a",
+      "identical_to_v1": true
+    }
+  },
+  "test2": {
+    "edges/anatomy_anatomy.parquet": {
+      "flat_rows": 17082,
+      "strat_rows": 17082,
+      "keys_match": true
+    },
+    "edges/anatomy_gene.parquet": {
+      "flat_rows": 8787955,
+      "strat_rows": 8787955,
+      "keys_match": true
+    },
+    "edges/biological_process_biological_process.parquet": {
+      "flat_rows": 44494,
+      "strat_rows": 44494,
+      "keys_match": true
+    },
+    "edges/biological_process_gene.parquet": {
+      "flat_rows": 158410,
+      "strat_rows": 158410,
+      "keys_match": true
+    },
+    "edges/cellular_component_cellular_component.parquet": {
+      "flat_rows": 4639,
+      "strat_rows": 4639,
+      "keys_match": true
+    },
+    "edges/cellular_component_gene.parquet": {
+      "flat_rows": 105309,
+      "strat_rows": 105309,
+      "keys_match": true
+    },
+    "edges/disease_disease.parquet": {
+      "flat_rows": 44215,
+      "strat_rows": 44215,
+      "keys_match": true
+    },
+    "edges/disease_phenotype.parquet": {
+      "flat_rows": 157144,
+      "strat_rows": 157144,
+      "keys_match": true
+    },
+    "edges/drug_drug.parquet": {
+      "flat_rows": 1345376,
+      "strat_rows": 1345376,
+      "keys_match": true
+    },
+    "edges/exposure_biological_process.parquet": {
+      "flat_rows": 2260,
+      "strat_rows": 2260,
+      "keys_match": true
+    },
+    "edges/exposure_cellular_component.parquet": {
+      "flat_rows": 13,
+      "strat_rows": 13,
+      "keys_match": true
+    },
+    "edges/exposure_disease.parquet": {
+      "flat_rows": 2391,
+      "strat_rows": 2391,
+      "keys_match": true
+    },
+    "edges/exposure_gene.parquet": {
+      "flat_rows": 2989,
+      "strat_rows": 2989,
+      "keys_match": true
+    },
+    "edges/exposure_molecular_function.parquet": {
+      "flat_rows": 47,
+      "strat_rows": 47,
+      "keys_match": true
+    },
+    "edges/gene_gene.parquet": {
+      "flat_rows": 327924,
+      "strat_rows": 327924,
+      "keys_match": true
+    },
+    "edges/molecular_function_gene.parquet": {
+      "flat_rows": 90933,
+      "strat_rows": 90933,
+      "keys_match": true
+    },
+    "edges/molecular_function_molecular_function.parquet": {
+      "flat_rows": 12587,
+      "strat_rows": 12587,
+      "keys_match": true
+    },
+    "edges/pathway_gene.parquet": {
+      "flat_rows": 46977,
+      "strat_rows": 46977,
+      "keys_match": true
+    },
+    "edges/pathway_pathway.parquet": {
+      "flat_rows": 2819,
+      "strat_rows": 2819,
+      "keys_match": true
+    },
+    "edges/phenotype_phenotype.parquet": {
+      "flat_rows": 24862,
+      "strat_rows": 24862,
+      "keys_match": true
+    },
+    "nodes/anatomy.parquet": {
+      "flat_rows": 13120,
+      "strat_rows": 13120,
+      "keys_match": true
+    },
+    "nodes/biological_process.parquet": {
+      "flat_rows": 25754,
+      "strat_rows": 25754,
+      "keys_match": true
+    },
+    "nodes/cellular_component.parquet": {
+      "flat_rows": 4052,
+      "strat_rows": 4052,
+      "keys_match": true
+    },
+    "nodes/exposure.parquet": {
+      "flat_rows": 881,
+      "strat_rows": 881,
+      "keys_match": true
+    },
+    "nodes/gene.parquet": {
+      "flat_rows": 61306,
+      "strat_rows": 61306,
+      "keys_match": true
+    },
+    "nodes/molecular_function.parquet": {
+      "flat_rows": 10161,
+      "strat_rows": 10161,
+      "keys_match": true
+    },
+    "nodes/pathway.parquet": {
+      "flat_rows": 2805,
+      "strat_rows": 2805,
+      "keys_match": true
+    }
+  }
+}
