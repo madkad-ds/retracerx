@@ -33,7 +33,8 @@ except Exception:  # pragma: no cover - a2_common absent or renamed
 def fatal(msg: str, *extra: str) -> "NoReturn":  # type: ignore[valid-type]
     print(f"[A3][FATAL] {msg}", file=sys.stderr)
     for e in extra:
-        print(f"           {e}", file=sys.stderr)
+        if e:                       # conditional details pass "" when not applicable
+            print(f"           {e}", file=sys.stderr)
     sys.exit(1)
 
 
@@ -45,11 +46,26 @@ def info(msg: str) -> None:
     print(f"[A3] {msg}")
 
 
+_A2_SHA_BROKEN = False
+
+
 def sha256_file(path: str | Path, chunk: int = 1 << 20) -> str:
-    """sha256 of a file. Delegates to a2_common when available so both steps agree."""
+    """
+    sha256 of a file. Delegates to a2_common so both steps agree on the implementation.
+
+    a2_common.sha256_file takes a Path (it calls path.open). If its signature ever differs,
+    fall back to the local implementation and SAY SO once — the output is byte-identical
+    either way, so this is a declared substitution, not a silent repair.
+    """
+    global _A2_SHA_BROKEN
     path = Path(path)
-    if _a2_sha256 is not None:
-        return _a2_sha256(str(path))
+    if _a2_sha256 is not None and not _A2_SHA_BROKEN:
+        try:
+            return _a2_sha256(path)
+        except (AttributeError, TypeError) as e:
+            _A2_SHA_BROKEN = True
+            warn(f"a2_common.sha256_file rejected a Path ({e}); using the local "
+                 f"implementation for the rest of this run. Output is identical.")
     h = hashlib.sha256()
     with path.open("rb") as fh:
         while True:

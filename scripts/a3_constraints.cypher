@@ -23,14 +23,24 @@ CREATE INDEX drug_inchikey  IF NOT EXISTS FOR (n:DRG)  ON (n.inchi_key);
 CREATE INDEX dis_umls       IF NOT EXISTS FOR (n:DIS)  ON (n.umls_cui);
 CREATE INDEX gen_symbol     IF NOT EXISTS FOR (n:GEN)  ON (n.symbol);
 
-// --- relationship-property indexes -----------------------------------------
-// The composite TYPE deliberately SPLITS the graph into 57 types, so a cross-group
-// question ("every INDICATION regardless of endpoint types") no longer maps to one
-// type. These indexes keep that question cheap without enumerating types.
-//   r.relation      cross-group queries: WHERE r.relation = 'INDICATION'
-//   r.endpoint_key  per-edge lookup against A7's removed_edge_ids.csv
-CREATE INDEX rel_relation     IF NOT EXISTS FOR ()-[r]-() ON (r.relation);
-CREATE INDEX rel_endpoint_key IF NOT EXISTS FOR ()-[r]-() ON (r.endpoint_key);
+// --- relationship indexes: deliberately NONE -------------------------------
+// Neo4j 5 requires a relationship TYPE on a relationship property index:
+//     FOR ()-[r]-() ON (r.prop)          <- INVALID, syntax error
+//     FOR ()-[r:SOME_TYPE]-() ON (r.prop) <- valid
+//
+// Adding the type back is not the fix, because the composite TYPE already removed
+// the problem the index was for:
+//
+//   * r.relation is CONSTANT within a type — every DRG_DIS__INDICATION edge has
+//     relation='INDICATION' — so a per-type index on it indexes a single key.
+//   * The cross-group question ("all INDICATION regardless of endpoint types") is
+//     served by TYPE DISJUNCTION, which is backed by the relationship-type lookup
+//     index Neo4j maintains automatically:
+//         MATCH ()-[r:DRG_DIS__INDICATION|DRG_PHE__INDICATION|DRG_BPO__INDICATION]-()
+//     That is an index-backed lookup, strictly better than a property scan.
+//   * r.endpoint_key does vary within a type, but nothing queries it from Cypher —
+//     A7's anti-join runs in Polars against canon_edges. 57 per-type indexes would
+//     be cost with no consumer. Add one for a specific type if that ever changes.
 
 // ---------------------------------------------------------------------------
 // OPTION B — only if you did NOT emit the shared ";Node" label. Ten per-label

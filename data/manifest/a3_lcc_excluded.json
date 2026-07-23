@@ -1,0 +1,29 @@
+{
+  "step": "A3.5",
+  "generated_at": "2026-07-23T14:31:03.255457+00:00",
+  "method": "upstream_lcc_table",
+  "dataset_version": "2.0",
+  "graph_variant": "full",
+  "excluded_nodes": 1167,
+  "excluded_edges": 1086,
+  "by_label": {
+    "DRG": 982,
+    "PHE": 164,
+    "DIS": 15,
+    "EXP": 6
+  },
+  "n_components": 430,
+  "component_size_histogram": {
+    "2": 364,
+    "3": 55,
+    "4": 3,
+    "5": 6,
+    "6": 1,
+    "226": 1
+  },
+  "degree_min": 1,
+  "degree_max": 63,
+  "parquet": "data/manifest/a3_lcc_excluded.parquet",
+  "parquet_sha256": "9461631803d7a74f533d509d9554d1a6fec6dee127faa065a676831383cc5361",
+  "warrant": "The how-to's 'no edges at all' is false: 0 nodes have degree 0. These nodes sit outside the LCC with edges among themselves. A4/A7 must anti-join THIS artifact, not filter on degree."
+}

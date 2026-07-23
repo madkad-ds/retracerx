@@ -1,0 +1,38 @@
+{
+  "step": "A3",
+  "generated_at": "2026-07-23T13:41:13.188919+00:00",
+  "dataset_version": "2.0",
+  "graph_variant": "full",
+  "relationship_type_scheme": "composite LABEL__RELATION",
+  "distinct_composite_types_in_census": 57,
+  "nodes_csv": {
+    "path": "neo4j/import/nodes.csv",
+    "sha256": "035443d250282838a7b74751a1ac89cf7425054018e5b9c3f333cfdc8980df89",
+    "rows": 190531,
+    "names_whitespace_flattened": 0,
+    "columns": [
+      "id:ID",
+      ":LABEL",
+      "label",
+      "name",
+      "id_prefix",
+      "inchi_key",
+      "umls_cui",
+      "symbol"
+    ]
+  },
+  "variants": {
+    "full": {
+      "edges_csv": "neo4j/import/edges_full.csv",
+      "edges_csv_sha256": "222a057d3ea9f8d114ed6094a2562d767a66e14f3f13bbac350bbd4d719ca2cd",
+      "removed_edge_ids_csv": null,
+      "removed_edge_ids_sha256": null,
+      "expected_nodes": 190531,
+      "expected_edges": 21813816,
+      "expected_distinct_types": 57,
+      "edges_before_filter": 21813816,
+      "removed_rows": 0,
+      "m_a3_1_newly_edgeless_drugs": null
+    }
+  }
+}

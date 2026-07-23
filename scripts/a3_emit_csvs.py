@@ -71,12 +71,28 @@ def read_expectations(manifest_dir: Path) -> dict:
     dataset_version = pick(census, ["dataset_version", "meta.dataset_version", "pin.dataset_version"],
                            "dataset_version", "okg_census.json")
 
-    n_nodes = int(pick(census, ["nodes_total", "counts.nodes", "totals.nodes", "nodes.total",
-                                "graph.nodes", "n_nodes"],
-                       "total node count", "okg_census.json"))
-    n_edges = int(pick(census, ["edges_total", "counts.edges", "totals.edges", "edges.total",
-                                "graph.edges", "n_edges"],
-                       "total edge count", "okg_census.json"))
+    # The census carries totals for BOTH variants under `variants.{full,lcc}`. A3 selects
+    # with the value A1 froze — it never assumes, and never reads a top-level total, because
+    # there isn't one. Getting this wrong is a 1,167-node / 1,086-edge silent difference.
+    known = census.get("variants", {})
+    if graph_variant not in known:
+        fatal(f"graph_variant '{graph_variant}' has no block in okg_census.json#variants",
+              f"variants present: {sorted(known)}",
+              "a1_decisions.json and the census disagree about which graph was measured.")
+    n_nodes = int(pick(census, [f"variants.{graph_variant}.n_nodes",
+                                f"variants.{graph_variant}.nodes"],
+                       f"node count for variant '{graph_variant}'", "okg_census.json"))
+    n_edges = int(pick(census, [f"variants.{graph_variant}.n_edges",
+                                f"variants.{graph_variant}.edges"],
+                       f"edge count for variant '{graph_variant}'", "okg_census.json"))
+
+    # The per-pair census and the leakage surface were measured on ONE variant. If that is
+    # not the variant being built, every count below is about a different graph.
+    census_variant = census.get("census_variant")
+    if census_variant is not None and census_variant != graph_variant:
+        fatal(f"census was measured on variant '{census_variant}' but A1 froze '{graph_variant}'",
+              "edges_by_label_relation and leakage_surface describe the measured variant only.",
+              "Re-run a1_census_okg.py against the frozen variant before importing.")
 
     pairs_raw = pick(integ, ["edges_by_label_relation", "measurements.edges_by_label_relation",
                              "M.edges_by_label_relation"],
@@ -94,6 +110,52 @@ def read_expectations(manifest_dir: Path) -> dict:
     if stray:
         fatal("leakage surface contains (label, relation) pairs absent from a2_integrity",
               f"stray pairs: {stray}")
+
+    # --- cross-file: a2_integrity and okg_census both carry a pair census -------------
+    # Two files, independently produced, describing the same table. Nothing previously
+    # reconciled them, so a stale a2_integrity would have been trusted in silence.
+    census_pairs_raw = census.get("edges_by_label_relation")
+    if census_pairs_raw is not None:
+        census_pairs = normalize_pair_counts(census_pairs_raw, "okg_census.edges_by_label_relation")
+        if census_pairs != pair_counts:
+            only_a2 = sorted(set(pair_counts) - set(census_pairs))
+            only_cen = sorted(set(census_pairs) - set(pair_counts))
+            diff = sorted((p, pair_counts[p], census_pairs[p]) for p in
+                          set(pair_counts) & set(census_pairs) if pair_counts[p] != census_pairs[p])
+            fatal("a2_integrity and okg_census disagree about the (label, relation) census",
+                  f"pairs only in a2_integrity: {only_a2}" if only_a2 else "",
+                  f"pairs only in okg_census: {only_cen}" if only_cen else "",
+                  f"count mismatches (pair, a2, census): {diff[:10]}" if diff else "",
+                  "One of the two is stale. Adjudicate before importing.")
+
+    # --- internal consistency: the census must agree with itself ---------------------
+    pair_sum = sum(pair_counts.values())
+    if pair_sum != n_edges:
+        fatal(f"per-pair census sums to {pair_sum:,} but variant total is {n_edges:,}",
+              "edges_by_label_relation and variants.* describe different graphs.")
+
+    leak_sum = sum(leak_counts.values())
+    leak_declared = census.get("leakage_total_edges")
+    if leak_declared is not None and int(leak_declared) != leak_sum:
+        fatal(f"leakage_surface sums to {leak_sum:,} but leakage_total_edges says {leak_declared:,}")
+
+    by_label = census.get("nodes_by_label")
+    if isinstance(by_label, list):
+        nsum = sum(int(r.get("len", r.get("count", 0))) for r in by_label)
+        if nsum != n_nodes:
+            fatal(f"nodes_by_label sums to {nsum:,} but variant total is {n_nodes:,}")
+
+    n_lab = census.get("n_edge_labels")
+    n_rel = census.get("n_relations")
+    obs_lab = len({l for l, _ in pair_counts})
+    obs_rel = len({r for _, r in pair_counts})
+    if n_lab is not None and int(n_lab) != obs_lab:
+        fatal(f"census n_edge_labels={n_lab} but edges_by_label_relation has {obs_lab}")
+    if n_rel is not None and int(n_rel) != obs_rel:
+        fatal(f"census n_relations={n_rel} but edges_by_label_relation has {obs_rel}")
+
+    info(f"census self-consistent: {len(pair_counts)} pairs / {obs_lab} labels / {obs_rel} relations "
+         f"/ {n_edges:,} edges / {n_nodes:,} nodes / leakage {leak_sum:,}")
 
     return dict(graph_variant=graph_variant, dataset_version=dataset_version,
                 n_nodes=n_nodes, n_edges=n_edges,
@@ -387,6 +449,31 @@ SET m.graph_variant      = '{variant}',
 
 
 # ---------------------------------------------------------------------------
+def preflight_writable(out_dir: Path) -> None:
+    """
+    The import dir is bind-mounted into the Neo4j container, which creates it owned by the
+    container's `neo4j` user (uid 7474). The host user then cannot write into it. Fail here,
+    in a second, rather than after a full pass over the data.
+    """
+    probe = out_dir / ".a3_write_probe"
+    try:
+        probe.write_text("ok")
+        probe.unlink()
+    except OSError as e:
+        try:
+            st = out_dir.stat()
+            owner = f"uid={st.st_uid} gid={st.st_gid} mode={oct(st.st_mode & 0o777)}"
+        except OSError:
+            owner = "unknown"
+        fatal(f"import dir {out_dir} is not writable ({e})",
+              f"current ownership: {owner}",
+              "Docker created it as the container's neo4j user (uid 7474). Fix with:",
+              f"    sudo chown -R \"$(id -u):$(id -g)\" {out_dir}",
+              f"    chmod 755 {out_dir}",
+              "Change ONLY the import dir. neo4j/data must stay owned by uid 7474 or the "
+              "database will not start.")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="Emit Neo4j bulk-importer CSVs for A3.")
     ap.add_argument("--nodes", default="data/canon/canon_nodes.parquet")
@@ -404,6 +491,7 @@ def main() -> None:
     mdir = Path(args.manifest_dir)
     out_dir = Path(args.import_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    preflight_writable(out_dir)
 
     exp = read_expectations(mdir)
     variant_suffix = "filtered" if args.removed else "full"
