@@ -1,0 +1,1278 @@
+{
+  "generated_at": "2026-07-16T10:13:14+00:00",
+  "dataset_version": "2.0",
+  "graph_variant": "full",
+  "stratified_policy": "verified_only",
+  "infer_rows_edges": 2000,
+  "infer_rows_nodes": 250000,
+  "nodes": {
+    "ANA": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "name": "String",
+        "definition": "String",
+        "xrefs": "List(String)",
+        "synonyms": "List(String)",
+        "ontology": "Struct({'description': String, 'title': String, 'license': String, 'version': String})"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)"
+      }
+    },
+    "BPO": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "name": "String",
+        "definition": "String",
+        "xrefs": "List(String)",
+        "synonyms": "List(String)",
+        "ontology": "Struct({'description': String, 'title': String, 'license': String, 'version': String})"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)"
+      }
+    },
+    "CCO": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "name": "String",
+        "definition": "String",
+        "xrefs": "List(String)",
+        "synonyms": "List(String)",
+        "ontology": "Struct({'description': String, 'title': String, 'license': String, 'version': String})"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)"
+      }
+    },
+    "DIS": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "name": "String",
+        "description": "String",
+        "code": "String",
+        "xrefs": "List(String)",
+        "parents": "List(String)",
+        "exact_synonyms": "List(String)",
+        "related_synonyms": "List(String)",
+        "narrow_synonyms": "List(String)",
+        "broad_synonyms": "List(String)",
+        "obsolete_terms": "List(String)",
+        "obsolete_xrefs": "List(String)",
+        "children": "List(String)",
+        "ancestors": "List(String)",
+        "descendants": "List(String)",
+        "therapeutic_areas": "List(String)",
+        "is_leaf": "Boolean",
+        "concept_ids": "List(String)",
+        "concept_names": "List(String)",
+        "umls_cui": "String",
+        "snomed_full_names": "List(String)",
+        "cui_semantic_type": "String",
+        "snomed_concept_ids": "List(String)"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)",
+        "description": "A3 / demo surface",
+        "umls_cui": "A6 disease join key"
+      }
+    },
+    "DRG": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "aromatic_carbons": "Int64",
+        "lipinski": "Float64",
+        "status": "String",
+        "type": "String",
+        "synonyms": "List(String)",
+        "inchi_key": "String",
+        "is_approved": "Boolean",
+        "chemical_abstracts_service_number": "String",
+        "accession_numbers": "List(String)",
+        "calculated_log_p": "Float64",
+        "enhanced_stereo": "Boolean",
+        "halogen_count": "Int64",
+        "cd_formula": "String",
+        "source_ids": "List(String)",
+        "mrdef": "String",
+        "mol_image_base64": "String",
+        "trade_names": "List(String)",
+        "description": "String",
+        "oh_nh": "Int64",
+        "has_been_withdrawn": "Boolean",
+        "sp_count": "Int64",
+        "rgb": "Float64",
+        "canonical_smiles": "String",
+        "mol_file_base64": "String",
+        "year_of_first_approval": "Int64",
+        "cd_mol_weight": "Float64",
+        "tpsa": "Float64",
+        "fda_labels": "Int64",
+        "cd_id": "String",
+        "name": "String",
+        "black_box_warning": "Boolean",
+        "unique_ingredient_identifier": "String",
+        "number_of_formulations": "Int64",
+        "o_n": "Int64",
+        "sp2_count": "Int64",
+        "hetero_sp2_count": "Int64",
+        "sp3_count": "Int64",
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "alogs": "Float64",
+        "rotatable_bonds": "Int64",
+        "inchi": "String",
+        "maximum_clinical_trial_phase": "Float64",
+        "struct_id": "String"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)",
+        "description": "A3 / demo surface",
+        "inchi_key": "A6 drug join key"
+      }
+    },
+    "EXP": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "name": "String",
+        "source_categories": "List(String)",
+        "source_details": "String"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)"
+      }
+    },
+    "GEN": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "symbol": "String",
+        "biotype": "String",
+        "transcript_ids": "List(String)",
+        "canonical_transcript": "Struct({'id': String, 'chromosome': String, 'start': Int64, 'end': Int64, 'strand': String})",
+        "canonical_exons": "List(String)",
+        "genomic_location": "Struct({'chromosome': String, 'start': Int64, 'end': Int64, 'strand': Int64})",
+        "alternative_genes": "List(String)",
+        "name": "String",
+        "hallmarks_attributes": "List(Struct({'pmid': Int64, 'description': String, 'attribute_name': String}))",
+        "cancer_hallmarks": "List(Struct({'pmid': Int64, 'description': String, 'impact': String, 'label': String}))",
+        "synonyms": "List(Struct({'label': String, 'source': String}))",
+        "symbol_synonyms": "List(Struct({'label': String, 'source': String}))",
+        "name_synonyms": "List(Struct({'label': String, 'source': String}))",
+        "function_descriptions": "List(String)",
+        "subcellular_locations": "List(Struct({'location': String, 'source': String, 'term_sl': String, 'label_sl': String}))",
+        "target_class": "List(Struct({'id': Int64, 'label': String, 'level': String}))",
+        "obsolete_symbols": "List(Struct({'label': String, 'source': String}))",
+        "obsolete_names": "List(Struct({'label': String, 'source': String}))",
+        "constraint_scores": "List(Struct({'constraint_type': String, 'score': Float64, 'exp': Float64, 'obs': Int64, 'oe': Float64, 'oe_lower': Float64, 'oe_upper': Float64, 'upper_rank': Int64, 'upper_bin': Int64, 'upper_bin6': Int64}))",
+        "target_enabling_package": "Struct({'target_from_source_id': String, 'description': String, 'therapeutic_area': String, 'url': String})",
+        "associated_proteins": "List(Struct({'id': String, 'source': String}))",
+        "xrefs": "List(Struct({'id': String, 'source': String}))",
+        "chemical_probes": "List(Struct({'control': String, 'drug_id': String, 'id': String, 'is_high_quality': Boolean, 'mechanism_of_action': List(String), 'origin': List(String), 'probe_miner_score': Int64, 'probes_drugs_score': Int64, 'score_in_cells': Int64, 'score_in_organisms': Int64, 'target_from_source_id': String, 'urls': List(Struct({'nice_name': String, 'url': String}))}))",
+        "homologues": "List(Struct({'species_id': String, 'species_name': String, 'homology_type': String, 'target_gene_id': String, 'is_high_confidence': String, 'target_gene_symbol': String, 'query_percentage_identity': Float64, 'target_percentage_identity': Float64, 'priority': Int64}))",
+        "tractability": "List(Struct({'modality': String, 'id': String, 'value': Boolean}))",
+        "safety_liabilities": "List(Struct({'event': String, 'event_id': String, 'effects': List(Struct({'direction': String, 'dosing': String})), 'biosamples': List(Struct({'cell_format': String, 'cell_label': String, 'tissue_id': String, 'tissue_label': String})), 'datasource': String, 'literature': String, 'url': String, 'studies': List(Struct({'description': String, 'name': String, 'type': String}))}))",
+        "transcription_start_site": "Int64"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)",
+        "symbol": "A4 Broad HGNC->Ensembl bridge"
+      }
+    },
+    "MFN": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "name": "String",
+        "definition": "String",
+        "xrefs": "List(String)",
+        "synonyms": "List(String)",
+        "ontology": "Struct({'description': String, 'title': String, 'license': String, 'version': String})"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)"
+      }
+    },
+    "PHE": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "name": "String",
+        "description": "String",
+        "code": "String",
+        "xrefs": "List(String)",
+        "parents": "List(String)",
+        "exact_synonyms": "List(String)",
+        "related_synonyms": "List(String)",
+        "narrow_synonyms": "List(String)",
+        "broad_synonyms": "List(String)",
+        "obsolete_terms": "List(String)",
+        "obsolete_xrefs": "List(String)",
+        "children": "List(String)",
+        "ancestors": "List(String)",
+        "descendants": "List(String)",
+        "type": "String",
+        "ontology": "Struct({'description': String, 'title': String, 'license': String, 'version': String})",
+        "concept_ids": "List(String)",
+        "concept_names": "List(String)",
+        "umls_cui": "String",
+        "snomed_full_names": "List(String)",
+        "cui_semantic_type": "String",
+        "snomed_concept_ids": "List(String)"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)",
+        "description": "A3 / demo surface",
+        "umls_cui": "A6 disease join key"
+      }
+    },
+    "PWY": {
+      "file": "nodes.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/nodes.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 190531,
+      "columns": {
+        "id": "String",
+        "label": "String",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "name": "String",
+        "species": "String"
+      },
+      "promotable": {
+        "name": "A3 (Neo4j import needs it as a column)"
+      }
+    }
+  },
+  "edges": {
+    "ANA-ANA": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "ANA-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "expression_rank": "Int64",
+        "call_quality": "String",
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "BPO-BPO": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "BPO-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "evidence": "List(String)",
+        "gene_product": "List(String)",
+        "eco_ids": "List(String)"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "CCO-CCO": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "CCO-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "evidence": "List(String)",
+        "gene_product": "List(String)",
+        "eco_ids": "List(String)"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "DIS-DIS": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "DIS-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "evidence_score": "Float64",
+        "evidence_count": "Int64",
+        "disease_specificity_index": "Null",
+        "disease_pleiotropy_index": "Null",
+        "evidence_index": "Null",
+        "disgenet_score": "Null",
+        "year_initial": "Null",
+        "year_final": "Null",
+        "number_of_pmids": "Null",
+        "number_of_snps": "Null",
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "DIS-PHE": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "aspect": "List(String)",
+        "bio_curation": "List(String)",
+        "evidence_type": "List(String)",
+        "frequency": "List(String)",
+        "modifiers": "List(String)",
+        "onset": "List(String)",
+        "qualifier_not": "Boolean",
+        "references": "List(String)",
+        "sexes": "List(String)",
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "DRG-BPO": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "reference_ids": "List(String)",
+        "highest_clinical_trial_phase": "Float64"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "DRG-DIS": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "structure_id": "String",
+        "drug_disease_id": "String",
+        "reference_ids": "List(String)",
+        "highest_clinical_trial_phase": "Float64"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "DRG-DRG": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "interaction_description": "String"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "DRG-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "source_ids": "List(String)",
+        "source_urls": "List(String)",
+        "mechanisms_of_action": "List(String)",
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "DRG-PHE": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "reference_ids": "List(String)",
+        "highest_clinical_trial_phase": "Float64",
+        "structure_id": "String",
+        "drug_disease_id": "String"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "EXP-BPO": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "evidence_count": "Int64",
+        "number_of_receptors": "Int64",
+        "receptors": "List(String)",
+        "receptor_notes": "List(String)",
+        "smoking_statuses": "List(String)",
+        "age_entries": "Int64",
+        "age_range_values": "List(String)",
+        "age_mean_values": "List(String)",
+        "age_median_values": "List(String)",
+        "age_point_values": "List(String)",
+        "age_open_range_values": "List(String)",
+        "sexes": "List(String)",
+        "races": "List(String)",
+        "methods": "List(String)",
+        "detection_limit": "List(String)",
+        "detection_limit_uom": "List(String)",
+        "detection_frequency": "List(String)",
+        "mediums": "List(String)",
+        "assay_notes": "List(String)",
+        "study_countries": "List(String)",
+        "states_or_provinces": "List(String)",
+        "city_town_region_areas": "List(String)",
+        "exposure_event_notes": "List(String)",
+        "outcome_relationships": "List(String)",
+        "exposure_outcome_notes": "List(String)",
+        "references": "List(String)",
+        "associated_study_titles": "List(String)",
+        "enrollment_start_years": "List(String)",
+        "enrollment_end_years": "List(String)",
+        "study_factors": "List(String)"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "EXP-CCO": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "evidence_count": "Int64",
+        "number_of_receptors": "Int64",
+        "receptors": "List(String)",
+        "receptor_notes": "List(String)",
+        "smoking_statuses": "List(String)",
+        "age_entries": "Int64",
+        "age_range_values": "List(String)",
+        "age_mean_values": "List(String)",
+        "age_median_values": "List(String)",
+        "age_point_values": "List(Null)",
+        "age_open_range_values": "List(Null)",
+        "sexes": "List(String)",
+        "races": "List(Null)",
+        "methods": "List(String)",
+        "detection_limit": "List(Null)",
+        "detection_limit_uom": "List(Null)",
+        "detection_frequency": "List(Null)",
+        "mediums": "List(String)",
+        "assay_notes": "List(String)",
+        "study_countries": "List(String)",
+        "states_or_provinces": "List(String)",
+        "city_town_region_areas": "List(String)",
+        "exposure_event_notes": "List(String)",
+        "outcome_relationships": "List(String)",
+        "exposure_outcome_notes": "List(String)",
+        "references": "List(String)",
+        "associated_study_titles": "List(String)",
+        "enrollment_start_years": "List(String)",
+        "enrollment_end_years": "List(String)",
+        "study_factors": "List(String)"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "EXP-DIS": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "evidence_count": "Int64",
+        "number_of_receptors": "Int64",
+        "receptors": "List(String)",
+        "receptor_notes": "List(String)",
+        "smoking_statuses": "List(String)",
+        "age_entries": "Int64",
+        "age_range_values": "List(String)",
+        "age_mean_values": "List(String)",
+        "age_median_values": "List(String)",
+        "age_point_values": "List(String)",
+        "age_open_range_values": "List(String)",
+        "sexes": "List(String)",
+        "races": "List(String)",
+        "methods": "List(String)",
+        "detection_limit": "List(String)",
+        "detection_limit_uom": "List(String)",
+        "detection_frequency": "List(String)",
+        "mediums": "List(String)",
+        "assay_notes": "List(String)",
+        "study_countries": "List(String)",
+        "states_or_provinces": "List(String)",
+        "city_town_region_areas": "List(String)",
+        "exposure_event_notes": "List(String)",
+        "outcome_relationships": "List(String)",
+        "exposure_outcome_notes": "List(String)",
+        "references": "List(String)",
+        "associated_study_titles": "List(String)",
+        "enrollment_start_years": "List(String)",
+        "enrollment_end_years": "List(String)",
+        "study_factors": "List(String)"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "EXP-EXP": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "evidence_count": "Int64",
+        "number_of_receptors": "Int64",
+        "receptors": "List(String)",
+        "receptor_notes": "List(String)",
+        "smoking_statuses": "List(String)",
+        "age_entries": "Int64",
+        "age_range_values": "List(String)",
+        "age_mean_values": "List(String)",
+        "age_median_values": "List(String)",
+        "age_point_values": "List(String)",
+        "age_open_range_values": "List(String)",
+        "sexes": "List(String)",
+        "races": "List(String)",
+        "methods": "List(String)",
+        "detection_limit": "List(String)",
+        "detection_limit_uom": "List(String)",
+        "detection_frequency": "List(String)",
+        "mediums": "List(String)",
+        "assay_notes": "List(String)",
+        "study_countries": "List(String)",
+        "states_or_provinces": "List(String)",
+        "city_town_region_areas": "List(String)",
+        "exposure_event_notes": "List(String)",
+        "outcome_relationships": "List(String)",
+        "exposure_outcome_notes": "List(String)",
+        "references": "List(String)",
+        "associated_study_titles": "List(String)",
+        "enrollment_start_years": "List(String)",
+        "enrollment_end_years": "List(String)",
+        "study_factors": "List(String)"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "EXP-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})",
+        "evidence_count": "Int64",
+        "number_of_receptors": "Int64",
+        "receptors": "List(String)",
+        "receptor_notes": "List(String)",
+        "smoking_statuses": "List(String)",
+        "age_entries": "Int64",
+        "age_range_values": "List(String)",
+        "age_mean_values": "List(String)",
+        "age_median_values": "List(String)",
+        "age_point_values": "List(String)",
+        "age_open_range_values": "List(String)",
+        "sexes": "List(String)",
+        "races": "List(String)",
+        "methods": "List(String)",
+        "detection_limit": "List(String)",
+        "detection_limit_uom": "List(String)",
+        "detection_frequency": "List(String)",
+        "mediums": "List(String)",
+        "assay_notes": "List(String)",
+        "study_countries": "List(String)",
+        "states_or_provinces": "List(String)",
+        "city_town_region_areas": "List(String)",
+        "exposure_event_notes": "List(String)",
+        "outcome_relationships": "List(String)",
+        "exposure_outcome_notes": "List(String)",
+        "references": "List(String)",
+        "associated_study_titles": "List(String)",
+        "enrollment_start_years": "List(String)",
+        "enrollment_end_years": "List(String)",
+        "study_factors": "List(String)"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "EXP-MFN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "evidence_count": "Int64",
+        "number_of_receptors": "Int64",
+        "receptors": "List(String)",
+        "receptor_notes": "List(String)",
+        "smoking_statuses": "List(String)",
+        "age_entries": "Int64",
+        "age_range_values": "List(String)",
+        "age_mean_values": "List(String)",
+        "age_median_values": "List(String)",
+        "age_point_values": "List(String)",
+        "age_open_range_values": "List(String)",
+        "sexes": "List(String)",
+        "races": "List(String)",
+        "methods": "List(String)",
+        "detection_limit": "List(Null)",
+        "detection_limit_uom": "List(Null)",
+        "detection_frequency": "List(Null)",
+        "mediums": "List(String)",
+        "assay_notes": "List(String)",
+        "study_countries": "List(String)",
+        "states_or_provinces": "List(String)",
+        "city_town_region_areas": "List(String)",
+        "exposure_event_notes": "List(String)",
+        "outcome_relationships": "List(String)",
+        "exposure_outcome_notes": "List(String)",
+        "references": "List(String)",
+        "associated_study_titles": "List(String)",
+        "enrollment_start_years": "List(String)",
+        "enrollment_end_years": "List(String)",
+        "study_factors": "List(String)"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "GEN-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "MFN-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})",
+        "evidence": "List(String)",
+        "gene_product": "List(String)",
+        "eco_ids": "List(String)"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "MFN-MFN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "PHE-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "evidence_score": "Float64",
+        "evidence_count": "Int64",
+        "disease_specificity_index": "Null",
+        "disease_pleiotropy_index": "Null",
+        "evidence_index": "Null",
+        "disgenet_score": "Null",
+        "year_initial": "Null",
+        "year_final": "Null",
+        "number_of_pmids": "Null",
+        "number_of_snps": "Null",
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "PHE-PHE": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    },
+    "PWY-GEN": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(String)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(String)})"
+      }
+    },
+    "PWY-PWY": {
+      "file": "edges.parquet",
+      "path": "/home/ec2-user/retracerx/data/okg_cache/doi_10_7910_DVN_IYNGEV/2.0/edges.parquet",
+      "stratified": false,
+      "properties_repr": "json",
+      "checksum": "verified",
+      "rows_in_file": 21813816,
+      "columns": {
+        "from": "String",
+        "to": "String",
+        "label": "String",
+        "relation": "String",
+        "undirected": "Boolean",
+        "properties": "String"
+      },
+      "chosen_because": "checksum=verified, flat, properties=json, policy=verified_only",
+      "alternatives": [],
+      "property_fields": {
+        "sources": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      },
+      "provenance": {
+        "present": true,
+        "sources_dtype": "Struct({'direct': List(String), 'indirect': List(Null)})"
+      }
+    }
+  },
+  "unused_files": [],
+  "warnings": []
+}

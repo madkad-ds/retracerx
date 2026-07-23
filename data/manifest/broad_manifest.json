@@ -1,0 +1,49 @@
+{
+  "source": "Broad Drug Repurposing Hub",
+  "url": "https://repo-hub.broadinstitute.org/repurposing",
+  "fetched_utc": "2026-07-17T10:32:27+00:00",
+  "pinning_note": "Broad refreshes content behind stable URLs: the filename date is when the URL was created, NOT the content version. !File_date + sha256 are the pin. (The DOI pins nothing (A1); the filename pins nothing (A4).)",
+  "files": {
+    "drug": {
+      "local_path": "data/sources/repo-drug-annotation-20200324.txt",
+      "filename": "repo-drug-annotation-20200324.txt",
+      "sha256": "5f8284538e73c19a316d1cf45ea10300de6e15c555d75ced7c1b7387457fc523",
+      "bytes": 661900,
+      "rows": 7540,
+      "columns": [
+        "pert_iname",
+        "clinical_phase",
+        "moa",
+        "target",
+        "disease_area",
+        "indication"
+      ],
+      "file_date": "8/18/2025",
+      "restrictions": "The Drug Repurposing Hub data is provided for non-commercial use only."
+    },
+    "sample": {
+      "local_path": "data/sources/repo-sample-annotation-20240610.txt",
+      "filename": "repo-sample-annotation-20240610.txt",
+      "sha256": "06eb19ad48f0e3301dbead3e184c14fd37b31c220151d5cd87fa487483db73fd",
+      "bytes": 4072927,
+      "rows": 22612,
+      "columns": [
+        "broad_id",
+        "pert_iname",
+        "qc_incompatible",
+        "purity",
+        "vendor",
+        "catalog_no",
+        "vendor_name",
+        "expected_mass",
+        "smiles",
+        "InChIKey",
+        "pubchem_cid",
+        "deprecated_broad_id"
+      ],
+      "file_date": "8/18/2025",
+      "restrictions": "The Drug Repurposing Hub data is provided for non-commercial use only."
+    }
+  },
+  "file_date": "8/18/2025"
+}

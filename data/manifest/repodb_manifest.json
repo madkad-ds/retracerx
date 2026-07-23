@@ -1,0 +1,35 @@
+{
+  "source": "repoDB",
+  "url": "https://unmtid-shinyapps.net/shiny/repodb/",
+  "download": "manual \u2014 Shiny 'Download the full repoDB Dataset' button, no direct URL",
+  "license": "CC BY 4.0",
+  "fetched_utc": "2026-07-17T09:35:18+00:00",
+  "sha256": "78e93082807a4a13cad7d1c5e4ca53b6a6654e0dbc1908a3893dc97b06637986",
+  "bytes": 1360865,
+  "rows": 13558,
+  "columns": [
+    "drug_name",
+    "drugbank_id",
+    "ind_name",
+    "ind_id",
+    "NCT",
+    "status",
+    "phase",
+    "DetailedStatus"
+  ],
+  "unique_drug_indication_pairs": 10602,
+  "unique_drugbank_ids": 2381,
+  "unique_ind_ids_umls_cui": 1462,
+  "status_counts": {
+    "Approved": 8931,
+    "Terminated": 3392,
+    "Withdrawn": 1108,
+    "Suspended": 127
+  },
+  "upstream_versions_per_release_notes": {
+    "drugcentral": "2022-08-22",
+    "aact": "2022-09",
+    "umls": "2022AA"
+  },
+  "note": "Paper figures (6,677/4,123/1,571, UMLS 2016AB) are the 2017 build and will NOT match."
+}

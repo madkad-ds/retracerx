@@ -1,0 +1,77 @@
+{
+  "canon_nodes": "/home/ec2-user/retracerx/data/canon/canon_nodes.parquet",
+  "okg_candidates": {
+    "DRG": {
+      "name": {
+        "unii": 365,
+        "chembl": 418
+      },
+      "inchi_key": {
+        "inchikey": 3002
+      },
+      "chemical_abstracts_service_number": {
+        "cas": 755
+      },
+      "unique_ingredient_identifier": {
+        "unii": 755
+      },
+      "source_ids": {
+        "drugbank": 2114,
+        "numeric": 1561,
+        "unii": 4
+      },
+      "cd_id": {
+        "numeric": 753
+      },
+      "struct_id": {
+        "numeric": 754
+      },
+      "cd_formula": {
+        "unii": 139
+      },
+      "synonyms": {
+        "unii": 25,
+        "numeric": 24,
+        "chembl": 1
+      },
+      "canonical_smiles": {
+        "unii": 1
+      }
+    },
+    "DIS": {
+      "concept_ids": {
+        "numeric": 466
+      },
+      "umls_cui": {
+        "umls_cui": 427
+      }
+    }
+  },
+  "broad_salt": {
+    "sample_rows": 22612,
+    "distinct_pert_iname": 7236,
+    "pert_iname_multi_key": 148
+  },
+  "broad_pubchem": {
+    "broad": 6396,
+    "okg": 0,
+    "intersection": 0
+  },
+  "broad": {
+    "launched_compounds": 2718,
+    "launched_with_key": 2548,
+    "launched_in_okg": 1734,
+    "broad_keys": 7328,
+    "okg_keyed": 10371,
+    "intersection": 3365
+  },
+  "repodb": {
+    "repodb_drugbank": 2381,
+    "repodb_cui": 1462,
+    "okg_drg": 16766,
+    "drugbank_as_id": 1227,
+    "drugbank_in_props": 6668,
+    "repodb_hit_via_id": 422,
+    "repodb_hit_via_props": 1905
+  }
+}

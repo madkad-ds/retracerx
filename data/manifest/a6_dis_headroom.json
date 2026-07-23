@@ -1,0 +1,39 @@
+{
+  "repodb_cuis": 1462,
+  "reachable_today": 719,
+  "unmatched": 743,
+  "ceiling_name_alike": 106,
+  "absent_from_graph": 637,
+  "best_case_coverage": 0.5643,
+  "nocui_drug_touched": 987,
+  "nocui_id_prefixes": {
+    "EFO": 897,
+    "ORPHANET": 51,
+    "MONDO": 35,
+    "DOID": 2,
+    "MP": 2
+  },
+  "vocabs_on_nocui_nodes": {
+    "SCTID": 9,
+    "MESH": 8,
+    "GARD": 8,
+    "Orphanet": 8,
+    "NCIT": 6,
+    "ICD9": 6,
+    "DOID": 5,
+    "MedDRA": 4,
+    "NANDO": 4,
+    "icd11.foundation": 3,
+    "MONDO": 2,
+    "NORD": 2,
+    "MFOMD": 1,
+    "URL": 1,
+    "DECIPHER": 1,
+    "ICDO": 1,
+    "ONCOTREE": 1,
+    "OMIMPS": 1
+  },
+  "cuis_to_many_nodes": 21,
+  "nodes_with_many_cuis": 0,
+  "note": "repoDB's only disease key is ind_id (UMLS CUI). MeSH/OMIM/MedDRA cannot be joined directly \u2014 a crosswalk expands OKG's CUI set, then the join runs on CUI as before. Name matching here bounds a ceiling; it is not a mapping and must not become one."
+}

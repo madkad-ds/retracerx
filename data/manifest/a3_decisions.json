@@ -1,0 +1,103 @@
+{
+  "step": "A3",
+  "frozen": true,
+  "frozen_date": "2026-07-23",
+  "note": "Written by hand, in the A1.5 pattern. Every decision carries its warrant and the measurement the warrant rests on. Downstream scripts READ this file; they do not re-derive it.",
+
+  "graph_variant": {
+    "value": "READ_FROM:data/manifest/a1_decisions.json#graph_variant",
+    "warrant": "A1.5 froze full vs lcc. A3 must not assume; every count depends on it."
+  },
+
+  "relationship_type_scheme": {
+    "value": "composite",
+    "format": "LABEL__RELATION",
+    "construction": "label.replace('-','_') + '__' + relation",
+    "example": "DRG-DIS + INDICATION -> DRG_DIS__INDICATION",
+    "distinct_types": 57,
+    "warrant": [
+      "57 distinct (label, relation) pairs measured from a2_integrity.json.edges_by_label_relation. Not 27 labels, not 36 relations.",
+      "A Neo4j relationship has exactly ONE type. label and relation cannot both be types; the node-side 'GEN;Node' multi-label trick has no relationship equivalent.",
+      "relation alone collapses INDICATION across DRG-DIS / DRG-PHE / DRG-BPO (57,601 + 1,027 + 62), losing the label distinction that DEFINES the leakage surface (G7).",
+      "label alone collapses INDICATION with CONTRAINDICATION inside DRG-DIS.",
+      "The (label, relation) PAIR is the unit of meaning: the A7 surface is 7 pairs / 79,949 edges.",
+      "57 is far inside Neo4j's usable type range; type-count ergonomics degrade in the thousands.",
+      "Double underscore is unambiguously reversible because no label contains '_' and no relation contains '__' (both asserted at emit).",
+      "No backticks required: every generated name matches ^[A-Za-z_][A-Za-z0-9_]*$ (asserted at emit)."
+    ]
+  },
+
+  "leakage_filter_method": {
+    "value": "re-import",
+    "rejected": "delete-in-place",
+    "filter_language": "polars",
+    "filter_key": "endpoint_key + relation",
+    "warrant": [
+      "Keeps the anti-join in the language where A2 MEASURED its safety. endpoint_key is orientation-insensitive on the 13 undirected labels, each stored exactly once (G5/M1); a (from,to) join under-removes silently.",
+      "The Neo4j store becomes a pure function of sha256-pinned inputs (canon_edges/ + removed_edge_ids.csv), so a3_manifest.json fully describes it. Delete-in-place makes the store 'import, then N mutations' — reproducible only if the mutation script is itself versioned.",
+      "Delete-in-place does not avoid the rebuild, it defers it: the deleted edges are gone from the store, so returning to the full graph requires re-emit + re-import anyway.",
+      "Cypher therefore never has to EXPRESS the leakage surface. Composite TYPE is retained for query ergonomics and verification, not for deletion correctness.",
+      "Neo4j does not reclaim store space on delete without a store copy; a deleted graph stays full-size on disk, so file size cannot serve as a variant tell either."
+    ]
+  },
+
+  "node_label_scheme": {
+    "value": "shared_Node",
+    "emitted_as": "<LABEL>;Node",
+    "warrant": "One uniqueness constraint on (:Node) replaces ten per-label constraints. The importer supports ';'-delimited labels natively."
+  },
+
+  "uniqueness_constraint_key": {
+    "value": "id",
+    "warrant": "A2 froze id as VERBATIM and G2 measured it globally unique across all 190,531 nodes. The how-to's id_curie does not exist as a column; a constraint on a non-existent property is a SILENT NO-OP.",
+    "rejected": "id_curie"
+  },
+
+  "relationship_properties_emitted": {
+    "value": ["label", "relation", "undirected", "endpoint_key"],
+    "warrant": [
+      "label + relation: the composite type splits the graph into 57 types; these properties keep cross-group queries (WHERE r.relation='INDICATION') possible without enumerating types.",
+      "undirected: REQUIRED. Neo4j always stores relationships directed, and the 13 undirected labels are stored one-way only. Without this property a Cypher author cannot distinguish 'genuinely directed' from 'stored once, semantically symmetric' and will write -[r]-> where -[r]- is required.",
+      "endpoint_key: serves A7 verification and per-edge lookup against removed_edge_ids.csv."
+    ]
+  },
+
+  "properties_not_loaded": {
+    "value": ["properties_json", "src_file", "src_checksum", "sources_direct", "sources_indirect", "description"],
+    "warrant": [
+      "Neo4j is a traversal runtime, not a second copy of the data. The canonical Parquet remains authoritative.",
+      "properties_json is the only field that could carry embedded newlines and force the slow --multiline-fields=true path across all 21.8M edges.",
+      "description is NULL for all 190,531 nodes (errata E4); the demo surface uses name.",
+      "Provenance (sources_direct / sources_indirect) stays in Parquet: it is a list, uneven across labels (0% on ANA-GEN and DRG-DRG), and citation-building reads the canonical tables, not the graph."
+    ]
+  },
+
+  "node_properties_emitted": {
+    "value": ["id", "label", "id_prefix", "name", "inchi_key", "umls_cui", "symbol"],
+    "warrant": "id_prefix is carried so demo and eval queries can exclude the 10,997 OBA nodes (biological attributes, not diseases) without a round-trip to Parquet."
+  },
+
+  "declared_transformations": {
+    "node_name_whitespace_normalized": {
+      "value": true,
+      "what": "CR/LF/TAB inside node.name are replaced with a single space in nodes.csv ONLY.",
+      "warrant": "Avoids forcing --multiline-fields=true, which would slow the 21.8M-edge import for a node-only problem. Canonical names in canon_nodes.parquet are untouched. The count of affected rows is measured and recorded in a3_manifest.json; if it is 0 this transformation is a no-op."
+    }
+  },
+
+  "variant_marker": {
+    "value": "(:_Meta {singleton:true})",
+    "warrant": "Neo4j Community Edition hosts ONE database and nothing inside it says which variant is loaded. Without a marker you can evaluate against the full graph and never know. a3_verify.py refuses to pass if the marker disagrees with the counts it measures.",
+    "fields": ["graph_variant", "dataset_version", "edges_csv_sha256", "removed_edge_count", "imported_at"]
+  },
+
+  "query_convention": {
+    "default_pattern": "-[r]-",
+    "warrant": "13 of 27 labels are undirected and stored one-way only. Directed patterns silently miss half the graph. Use -[r]-> ONLY where r.undirected = false is checked. Applies to demo subgraph, verification snippets, and every template handed to retrieval."
+  },
+
+  "a7_contract": {
+    "removed_edge_ids_csv_must_carry": ["endpoint_key", "relation", "from", "to", "label"],
+    "warrant": "a3_emit_csvs.py FATALs without endpoint_key. The (from,to) fallback under-removes on undirected labels with no visible symptom, which is precisely the failure endpoint_key exists to prevent."
+  }
+}

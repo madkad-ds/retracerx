@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-07-16T10:23:17+00:00",
+  "dataset_version": "2.0",
+  "graph_variant": "full",
+  "stratified_policy": "verified_only",
+  "inputs": {
+    "a2_source_policy.json": "977df4cd302ffb80ecdbe9eed87bb5ae71a5568f3696d77131a34fef53176b1b",
+    "a2_decisions.json": "c276713affa83c5cbd7ba0a54bdf253107637c00e288dff5010682e91245ce53"
+  },
+  "outputs": {
+    "data/canon/canon_nodes.parquet": {
+      "sha256": "c7c331b62c845312872cdb58e0e445b36d612869ce2c0861bedab00bbb39901c",
+      "rows": 190531,
+      "bytes": 122811451
+    },
+    "data/canon/canon_edges/": {
+      "sha256_tree": "81920a3f88c3f1551537f1fa8d73b32bcd948021825441bc3fdfce4f8378efbe",
+      "rows": 21813816,
+      "files": [
+        "ANA-ANA.parquet",
+        "ANA-GEN.parquet",
+        "BPO-BPO.parquet",
+        "BPO-GEN.parquet",
+        "CCO-CCO.parquet",
+        "CCO-GEN.parquet",
+        "DIS-DIS.parquet",
+        "DIS-GEN.parquet",
+        "DIS-PHE.parquet",
+        "DRG-BPO.parquet",
+        "DRG-DIS.parquet",
+        "DRG-DRG.parquet",
+        "DRG-GEN.parquet",
+        "DRG-PHE.parquet",
+        "EXP-BPO.parquet",
+        "EXP-CCO.parquet",
+        "EXP-DIS.parquet",
+        "EXP-EXP.parquet",
+        "EXP-GEN.parquet",
+        "EXP-MFN.parquet",
+        "GEN-GEN.parquet",
+        "MFN-GEN.parquet",
+        "MFN-MFN.parquet",
+        "PHE-GEN.parquet",
+        "PHE-PHE.parquet",
+        "PWY-GEN.parquet",
+        "PWY-PWY.parquet"
+      ],
+      "bytes": 247669751
+    }
+  },
+  "source_files_used": [
+    "edges.parquet",
+    "nodes.parquet"
+  ],
+  "source_files_not_checksum_verified": [],
+  "all_gates_passed": true
+}

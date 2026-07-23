@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-07-16T10:13:14+00:00",
+  "dataset_version": "2.0",
+  "graph_variant": "full",
+  "frozen": true,
+  "decisions": {
+    "primary_key": {
+      "value": "nodes.id verbatim; edges keyed (from, to, label, relation)",
+      "rationale": "The how-to's A2 snippet aliases id -> id_curie, but A3's Neo4j constraint and A7's removed_edge_ids.csv both key on `id` / (from,to,label,relation). Renaming here makes the A3 constraint a silent no-op. The key is never rewritten; normalization is emitted as derived columns (id_prefix, id_local) alongside it."
+    },
+    "properties": {
+      "value": "retain verbatim as properties_json + typed promotions",
+      "rationale": "Struct schemas differ per label, so a single canonical table cannot hold native structs. Promote the fields A3/A4/A6 need to typed columns; keep the rest as JSON so nothing is lost."
+    },
+    "provenance": {
+      "value": "sources_direct / sources_indirect as List(str) on every edge",
+      "rationale": "There is no provided_by column. Provenance is properties.sources.{direct,indirect} and both are LISTS \u2014 'which datasets contributed or referenced this edge', plural. Pitfall #5: expensive to recover later."
+    },
+    "undirected": {
+      "value": "stored orientation preserved; no reorientation, no dedupe; edge_key added",
+      "rationale": "DRG-DIS is undirected:true. A7 anti-joins on (from,to) and A8 emits directed triples; both break if an undirected edge is stored in the opposite orientation to the gold pair. edge_key = unordered endpoint key makes A7's removal orientation-safe without mutating the graph here. Whether A8 emits both orientations stays an A8 decision, informed by a2_integrity.json."
+    },
+    "source_policy": {
+      "value": "verified_only",
+      "rationale": "verified_only: 'adjudicated benign' is a judgement, 'checksum-verified' is a fact. Where both exist, the fact wins; the cost is JSON-decoding instead of a typed read."
+    }
+  },
+  "inputs": {
+    "a2_source_policy.json.sha256": "977df4cd302ffb80ecdbe9eed87bb5ae71a5568f3696d77131a34fef53176b1b"
+  }
+}

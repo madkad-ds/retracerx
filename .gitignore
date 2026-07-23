@@ -5,3 +5,5 @@ neo4j/data/
 neo4j/import/
 .venv-data/
 data/okg_cache/
+logs/
+data/canon/

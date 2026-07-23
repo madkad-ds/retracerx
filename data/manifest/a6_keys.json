@@ -1,0 +1,105 @@
+{
+  "step": "A6",
+  "frozen": true,
+  "decided_on": "2026-07-22T12:57:43+00:00",
+  "inputs": {
+    "a5_key_probe.json": "a5_key_probe.json",
+    "a6_dis_headroom.json": "a6_dis_headroom.json",
+    "canon_nodes": "/home/ec2-user/retracerx/data/canon/canon_nodes.parquet"
+  },
+  "principle": "Keys are per-SOURCE, not universal. Broad and repoDB are different sources with different native identifiers, so each gets its own key and its own join. A drug-disease pair is two entities, so each side is a separate join. Every route must terminate at the identifier the OTHER side actually publishes \u2014 measured, never assumed.",
+  "keys": {
+    "broad_drug": {
+      "key": "InChIKey",
+      "join": "Broad sample.InChIKey  ==  OKG DRG.inchi_key",
+      "warrant": "Broad ships NO DrugBank id; InChIKey is the only structural bridge. Built from the two bulk files (there is no public API) via a4_broad_join.py -> broad_compounds.parquet.",
+      "coverage": {
+        "launched_compounds": 2718,
+        "launched_reaching_okg": 1734,
+        "note": "This is A4's candidate universe. NOT the 62.3% inchi_key presence figure and NOT the row-inflated 72.1% \u2014 those were denominator errors. This is distinct Launched compounds reaching an OKG node."
+      }
+    },
+    "repodb_drug": {
+      "key": "DrugBank id, recovered from OKG properties.source_ids (DB##### shape)",
+      "join": "repoDB.drugbank_id  ==  DB##### parsed from OKG DRG.source_ids",
+      "warrant": "repoDB is natively keyed on DrugBank, so this route needs no UniChem hop AND reaches biologics that InChIKey structurally cannot. Node-id DrugBank alone reaches only 17.7%; the properties route reaches 80.0%. source_ids is an UNLABELED list e.g. [\"DB00341\",\"3561\"] \u2014 DrugBank is identified by the DB##### shape; the bare-numeric element is unattributable (PubChem? struct_id? RxNorm?) and MUST NOT be treated as any specific vocabulary.",
+      "coverage": {
+        "repodb_drugs": 2381,
+        "reachable_via_node_id": 422,
+        "reachable_via_properties": 1905
+      }
+    },
+    "repodb_disease": {
+      "key": "UMLS CUI (OKG umls_cui, native)",
+      "join": "repoDB.ind_id  ==  OKG DIS.umls_cui",
+      "warrant": "repoDB's ONLY disease identifier is ind_id, a UMLS CUI. There is no MeSH/OMIM/MedDRA column, so those cannot be joined directly \u2014 a crosswalk would only expand OKG's CUI set, then the join still runs on CUI. The xrefs route (umls_cui_xrefs) was measured and adds ZERO repoDB matches, so it is NOT used for the join.",
+      "coverage": {
+        "repodb_cuis": 1462,
+        "reachable_native_and_xrefs": 719,
+        "note": "native and native+xrefs are identical on the repoDB population \u2014 xrefs enriches OKG nodes repoDB never names."
+      }
+    }
+  },
+  "no_crosswalk_ruling": {
+    "decision": "Do NOT build a MeSH/OMIM/MedDRA/MONDO -> UMLS crosswalk.",
+    "measured_evidence": {
+      "repodb_cuis_unmatched": 743,
+      "ceiling_name_alike": 106,
+      "ceiling_note": "name-alike ceiling is inflated by ~88k synonyms and is an upper bound of true recoveries, not a count of them",
+      "absent_from_graph": 637,
+      "best_case_coverage_if_every_name_match_were_real": 0.5643,
+      "keyless_node_namespaces": {
+        "EFO": 897,
+        "ORPHANET": 51,
+        "MONDO": 35,
+        "DOID": 2,
+        "MP": 2
+      },
+      "xrefs_route_extra_repodb_matches": 0
+    },
+    "reasoning": [
+      "Most unmatched CUIs (~86%) are diseases ABSENT from OKG entirely \u2014 trial conditions from ClinicalTrials.gov/AACT (symptoms, organism-specific infections, clinical states) that no disease ontology models. No crosswalk reaches a node that does not exist.",
+      "The keyless drug-touched DIS nodes are ~91% EFO; only ~4% are MONDO+DOID. A MONDO/DOID crosswalk addresses the wrong ontology.",
+      "The xrefs route already gave 406 nodes a CUI from ontology-lineage cross-references and produced zero additional repoDB matches. A MONDO crosswalk draws from the same lineage \u2014 same well, same water.",
+      "Cost (licensed ~1GB MRCONSO + a new pinned source) vastly exceeds the real gain, and a crosswalk SHIFTS which diseases are evaluable, changing the evaluation set composition \u2014 a cost, not a pure win."
+    ],
+    "if_revisited_later": "The ~106 name-alike-recoverable CUIs are diseases PRESENT in OKG under a DIFFERENT CUI (e.g. CLL, melanoma) \u2014 a UMLS synonymy problem, not an ontology-bridge problem. The right artifact would be UMLS MRREL/MRCONSO CUI<->CUI same-concept links, NOT MONDO->UMLS. Different tool entirely.",
+    "honest_ceiling": "719/1462 repoDB CUIs reachable. State this as a measured coverage BOUNDARY in the writeup: roughly half of repoDB's indications describe conditions OptimusKG does not contain. This is a property of the two datasets, not a key failure."
+  },
+  "open_rules": [
+    {
+      "id": "shared_inchikey",
+      "problem": "~75 OKG DRG nodes share an inchi_key with another node (10,446 nodes / 10,371 distinct keys), so Broad<->OKG on inchi_key is NOT 1:1 and will duplicate rows.",
+      "why_it_matters": "duplicates gold pairs; corrupts holdout counts (A7).",
+      "decision_needed": "node-collapse or key-disambiguation rule before the join.",
+      "status": "OPEN \u2014 A6 must state a rule; do not inherit from row order."
+    },
+    {
+      "id": "broad_salt_forms",
+      "problem": "148 Broad compounds ship as >1 distinct InChIKey (salt/stereo forms). broad_compounds.parquet leaves inchi_key NULL for these by design and keeps all keys in `inchikeys`.",
+      "why_it_matters": "picking one silently chooses a salt form.",
+      "decision_needed": "parent-structure / desalting rule, or match on any key.",
+      "status": "OPEN \u2014 surfaced (n_inchikeys), not resolved."
+    },
+    {
+      "id": "cui_to_many_nodes",
+      "problem": "21 repoDB CUIs map to >1 OKG DIS node (EFO and MONDO for the same disease \u2014 the ontology merge showing through).",
+      "why_it_matters": "join is not 1:1; duplicates gold pairs and inflates holdout counts (the how-to's explicit warning).",
+      "decision_needed": "node-collapse rule: prefer MONDO? prefer the drug-touched node? collapse to one canonical DIS?",
+      "status": "OPEN \u2014 independent of any coverage decision."
+    },
+    {
+      "id": "nodes_with_many_cuis",
+      "problem": "0 OKG DIS nodes carry >1 UMLS CUI (native + xrefs disagree, or multiple xref CUIs).",
+      "why_it_matters": "a node matching two repoDB CUIs double-counts.",
+      "decision_needed": "which CUI is canonical per node (native over xref?).",
+      "status": "OPEN."
+    }
+  ],
+  "not_a6": [
+    "Building the crosswalk (ruled out above, with evidence).",
+    "Removing leakage \u2014 A7 anti-joins DRG-DIS on endpoint_key.",
+    "Deduping / reorienting the graph \u2014 A2 canonicalized; it does not edit.",
+    "Choosing the numeric element of source_ids as any vocabulary \u2014 unattributable."
+  ]
+}
